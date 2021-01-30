@@ -10,7 +10,9 @@ namespace DepartmentModule.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public Book Program { get; set; }
+        public int ProgramID { get; set; }
         public Book Themes { get; set; }
+        public int ThemesID { get; set; }
         public List<Book> Literatures { get; set; }
         public List<Book> AdditionalLiteratures { get; set; }
     }

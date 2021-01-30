@@ -12,6 +12,7 @@ namespace DepartmentModule.Data
         public DepartmentModuleContext (DbContextOptions<DepartmentModuleContext> options)
             : base(options)
         {
+            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
