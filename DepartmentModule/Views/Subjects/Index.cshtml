@@ -9,9 +9,58 @@
 <p>
     <a class="btn btn-primary" asp-action="Create">Create New</a>
 </p>
- 
-
-     @foreach (var item in Model) 
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">
+                CCC
+            </th>
+            <th scope="col">
+                <section>
+                    <table>
+                        <thead>
+                            <tr>
+                                Adabiyot
+                            </tr>
+                       </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Assosiy
+                                </td>
+                                <td>
+                                    Qo'shimcha
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+            <section>
+                <table>
+                    <tbody>
+                        <tr>
+                            AAA
+                        </tr>
+                        <tr>
+                            BBB
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            </td>
+            <td>
+                123
+            </td>
+        </tr>
+    </tbody>
+</table>
+     @*@foreach (var item in Model) 
      {
         <div class="card border-primary mb-3" style="max-width: 20rem;">
                     <div class="card-header">@Html.DisplayFor(modelItem => item.Name)</div>
@@ -19,9 +68,12 @@
                         <h4 class="card-title">Primary card title</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     </div>
+            
                     <a class="btn btn-warning " asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
                     <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
 
-        </div> 
-      }
+        </div>}*@ 
+
+
+
 
