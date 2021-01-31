@@ -19,17 +19,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="Program" class="control-label"></label>
-                <select asp-for="ProgramID" class="form-control" asp-items="ViewBag.ProgramID">
+                <select asp-for="Program.Id" class="form-control" asp-items="ViewBag.Program.Id">
                     <option value="">-- Select Department --</option>
                 </select>
-                <span asp-validation-for="ProgramID" class="text-danger" />
+                <span asp-validation-for="Program.Id" class="text-danger" />
             </div>
             <div class="form-group">
                 <label asp-for="Themes" class="control-label"></label>
-                <select asp-for="ThemesID" class="form-control" asp-items="ViewBag.ThemesID">
+                <select asp-for="Themes.Id" class="form-control" asp-items="ViewBag.Themes.Id">
                     <option value="">-- Select Department --</option>
                 </select>
-                <span asp-validation-for="ThemesID" class="text-danger" />
+                <span asp-validation-for="Themes.Id" class="text-danger" />
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
