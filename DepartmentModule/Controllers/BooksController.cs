@@ -7,18 +7,41 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DepartmentModule.Data;
 using DepartmentModule.Models;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace DepartmentModule.Controllers
 {
     public class BooksController : Controller
     {
         private readonly DepartmentModuleContext _context;
+        IWebHostEnvironment _appEnvironment;
 
-        public BooksController(DepartmentModuleContext context)
+        public BooksController(DepartmentModuleContext context, IWebHostEnvironment appEnvironment)
         {
             _context = context;
+            _appEnvironment = appEnvironment;
         }
+        [HttpPost]
+        public async Task<IActionResult> Upload(IFormFile uploadedFile)
+        {
+            if (uploadedFile != null)
+            {
+                // путь к папке Files
+                string path = "/Files/" + uploadedFile.FileName;
+                // сохраняем файл в папку Files в каталоге wwwroot
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                {
+                    await uploadedFile.CopyToAsync(fileStream);
+                }
+                Book book = new Book { Name = uploadedFile.FileName, Url = path };
+                _context.Book.Add(book);
+                _context.SaveChanges();
+            }
 
+            return RedirectToAction("Index");
+        }
         // GET: Books
         public async Task<IActionResult> Index()
         {
