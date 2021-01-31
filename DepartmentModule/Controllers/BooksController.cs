@@ -23,25 +23,7 @@ namespace DepartmentModule.Controllers
             _context = context;
             _appEnvironment = appEnvironment;
         }
-        [HttpPost]
-        public async Task<IActionResult> Upload(IFormFile uploadedFile)
-        {
-            if (uploadedFile != null)
-            {
-                // путь к папке Files
-                string path = "/Files/" + uploadedFile.FileName;
-                // сохраняем файл в папку Files в каталоге wwwroot
-                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
-                {
-                    await uploadedFile.CopyToAsync(fileStream);
-                }
-                Book book = new Book { Name = uploadedFile.FileName, Url = path };
-                _context.Book.Add(book);
-                _context.SaveChanges();
-            }
-
-            return RedirectToAction("Index");
-        }
+        
         // GET: Books
         public async Task<IActionResult> Index()
         {

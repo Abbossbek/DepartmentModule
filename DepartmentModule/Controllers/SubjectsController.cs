@@ -7,16 +7,21 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DepartmentModule.Data;
 using DepartmentModule.Models;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace DepartmentModule.Controllers
 {
     public class SubjectsController : Controller
     {
         private readonly DepartmentModuleContext _context;
+        IWebHostEnvironment _appEnvironment;
 
-        public SubjectsController(DepartmentModuleContext context)
+        public SubjectsController(DepartmentModuleContext context, IWebHostEnvironment appEnvironment)
         {
             _context = context;
+            _appEnvironment = appEnvironment;
         }
 
         // GET: Subjects
@@ -54,10 +59,11 @@ namespace DepartmentModule.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Subject subject)
+        public async Task<IActionResult> Create([Bind("Id,Name")] Subject subject, [Bind("programFile")]IFormFile programFile)
         {
             if (ModelState.IsValid)
             {
+                subject.Program = Upload(programFile);
                 _context.Add(subject);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -65,6 +71,21 @@ namespace DepartmentModule.Controllers
             return View(subject);
         }
 
+        public Book Upload(IFormFile uploadedFile)
+        {
+            if (uploadedFile != null)
+            {
+                // путь к папке Files
+                string path = "/Files/" + uploadedFile.FileName;
+                // сохраняем файл в папку Files в каталоге wwwroot
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                {
+                    uploadedFile.CopyTo(fileStream);
+                }
+                return new Book { Name = uploadedFile.FileName, Url = path };
+            }
+            return null;
+        }
         // GET: Subjects/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
