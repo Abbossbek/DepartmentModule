@@ -4,14 +4,16 @@ using DepartmentModule.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DepartmentModule.Migrations
 {
     [DbContext(typeof(DepartmentModuleContext))]
-    partial class DepartmentModuleContextModelSnapshot : ModelSnapshot
+    [Migration("20210131071909_NewDataBase")]
+    partial class NewDataBase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,10 +59,10 @@ namespace DepartmentModule.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProgramId")
+                    b.Property<int>("ProgramId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ThemesId")
+                    b.Property<int>("ThemesId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -87,12 +89,15 @@ namespace DepartmentModule.Migrations
                 {
                     b.HasOne("DepartmentModule.Models.Book", "Program")
                         .WithMany()
-
-                        .HasForeignKey("ProgramId");
+                        .HasForeignKey("ProgramId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DepartmentModule.Models.Book", "Themes")
                         .WithMany()
-                        .HasForeignKey("ThemesId");
+                        .HasForeignKey("ThemesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
