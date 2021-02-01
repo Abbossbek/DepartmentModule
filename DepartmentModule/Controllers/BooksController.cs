@@ -18,6 +18,8 @@ namespace DepartmentModule.Controllers
         private readonly DepartmentModuleContext _context;
         IWebHostEnvironment _appEnvironment;
 
+        public static bool AddingLiterature { get; private set; }
+
         public BooksController(DepartmentModuleContext context, IWebHostEnvironment appEnvironment)
         {
             _context = context;
@@ -154,5 +156,19 @@ namespace DepartmentModule.Controllers
         {
             return _context.Book.Any(e => e.Id == id);
         }
+        
+        public async  Task<IActionResult> AddLiterature()
+        {
+            AddingLiterature = true;
+            return View("Index", await _context.Book.Where(x =>
+            !SubjectsController.Current.Literatures.Contains(x)).ToListAsync());
+        }
+        public async Task<IActionResult> AddAdditionallLiterature()
+        {
+            AddingLiterature = false;
+            return View("Index", await _context.Book.Where(x=>
+            !SubjectsController.Current.AdditionalLiteratures.Contains(x)).ToListAsync());
+        }
+
     }
 }

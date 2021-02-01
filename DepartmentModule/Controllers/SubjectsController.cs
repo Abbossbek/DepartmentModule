@@ -18,6 +18,8 @@ namespace DepartmentModule.Controllers
         private readonly DepartmentModuleContext _context;
         IWebHostEnvironment _appEnvironment;
 
+        public static Subject Current { get; private set; }
+
         public SubjectsController(DepartmentModuleContext context, IWebHostEnvironment appEnvironment)
         {
             _context = context;
@@ -89,16 +91,22 @@ namespace DepartmentModule.Controllers
         // GET: Subjects/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            
             if (id == null)
             {
                 return NotFound();
             }
-
-            var subject = await _context.Subject.FindAsync(id);
+            
+            var subject = _context.Subject
+                .Include("Program")
+                .Include("AdditionalLiteratures")
+                .Include("Themes")
+                .Include("Literatures").ToList().Find(x=>x.Id==id);
             if (subject == null)
             {
                 return NotFound();
             }
+            Current = subject;
             return View(subject);
         }
 
@@ -170,5 +178,27 @@ namespace DepartmentModule.Controllers
         {
             return _context.Subject.Any(e => e.Id == id);
         }
+        public async Task<IActionResult> Select(int? id)
+        {
+            if (id == null || Current==null)
+            {
+                return NotFound();
+            }
+
+            if (BooksController.AddingLiterature)
+            {
+                var book = await _context.Book.FindAsync(id);
+                Current.Literatures.Add(book);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                var book = await _context.Book.FindAsync(id);
+                Current.AdditionalLiteratures.Add(book);
+                await _context.SaveChangesAsync();
+            }
+            return View("Edit",Current);
+        }
+   
     }
 }

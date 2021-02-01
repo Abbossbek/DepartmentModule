@@ -4,61 +4,136 @@
     ViewData["Title"] = "Edit";
 }
 
-
-<div class="card mb-3">
-    <h3 class="card-header" ></h3>
-    <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-    </div>
-    <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-        <rect width="100%" height="100%" fill="#868e96"></rect>
-        <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-    </svg>
-    <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-    <ul class="list-group">
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            Cras justo odio
-            <span class="badge badge-primary badge-pill">14</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            Dapibus ac facilisis in
-            <span class="badge badge-primary badge-pill">2</span>
-        </li>
-        
-    </ul>
-    <div class="card-body">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-    </div>
-    <div class="card-footer text-muted">
-        2 days ago
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-body">
-        <h4 class="card-title">Search Google || Maydoni </h4>
-        <div class="form-group">
-            <div class="input-group mb-3">
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="inputGroupFile02">
-                    <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-                </div>
-                <div class="input-group-append">
-                    <span class="input-group-text">Upload</span>
-                </div>
+<h1>Edit</h1>
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-        </div>
-        <!--Good dan Iboralar bo'yicha ma'lumot qo'shish-->
-        <div class="form-group">
-            <label class="col-form-label col-form-label-sm" for="inputSmall">Small input</label>
-            <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" id="inputSmall">
-        </div>
-    </div>
-</div>
+                            <label asp-for="Program" class="control-label"></label>
+            <div class="form-group card">
+                <table cellpadding="10">
+                    <tr>
+                        <td>
+                            <label asp-for="Program.Name" class="control-label"></label>
+                        </td>
+                        <td>
+                            <input asp-for="Program.Name" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label asp-for="Program.Url" class="control-label"></label>
+                        </td>
+                        <td>
+                            <input asp-for="Program.Name" name="programFile" type="file"  />
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+                            <label asp-for="Themes" class="control-label"></label>
+            <div class="form-group card">
+                <table cellpadding="10">
+                   
+                    <tr>
+                        <td>
+                            <label asp-for="Themes.Name" class="control-label"></label>
+                        </td>
+                        <td>
+                            <input asp-for="Themes.Name" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label asp-for="Themes.Url" class="control-label"></label>
+                        </td>
+                        <td>
+                            <input asp-for="Themes.Name" name="themesFile" type="file" />
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="form-group">
+                <label asp-for="Literatures" class="control-label"></label>
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+
+                            <td>
+                                Name
+                            </td>
+                            <td>
+                                <a  asp-controller="Books" asp-action="AddLiterature" class="btn btn-primary ">Add New</a>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model.Literatures)
+                        {
+                        <tr>
+                            <td>
+                                @item.Name
+                            </td>
+                            
+                            <td>
+                                <a asp-controller="Books" asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id">Edit</a>
+                                <a asp-controller="Books" asp-action="Details" class="btn btn-success" asp-route-id="@item.Id">Details</a>
+                                <a asp-controller="Books" asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+            </div>
+            
+            <div class="form-group">
+               <label asp-for="AdditionalLiteratures" class="control-label"></label>
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <td>
+                                Name
+                            </td>
+
+                            <td>
+                                <a asp-controller="Books" asp-action="AddAdditionalLiterature" class="btn btn-primary ">Add New</a>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model.AdditionalLiteratures)
+                        {
+                        <tr>
+                            <td>
+                                @item.Name
+                            </td>
+
+                            <td>
+                                <a asp-controller="Books" asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id">Edit</a>
+                                <a asp-controller="Books" asp-action="Details" class="btn btn-success" asp-route-id="@item.Id">Details</a>
+                                <a asp-controller="Books" asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+
 
 <div>
     <a asp-action="Index">Back to List</a>
