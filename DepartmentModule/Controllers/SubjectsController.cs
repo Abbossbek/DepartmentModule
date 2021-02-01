@@ -27,7 +27,7 @@ namespace DepartmentModule.Controllers
         // GET: Subjects
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Subject.ToListAsync());
+            return View(await _context.Subject.Include("Program").Include("AdditionalLiteratures").Include("Themes").Include("Literatures").ToListAsync());
         }
 
         // GET: Subjects/Details/5
