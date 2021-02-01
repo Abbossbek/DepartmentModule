@@ -24,6 +24,9 @@
             <th colspan="2" class="text-center">
                 Adabiyotlar
             </th>
+            <th class="text-xl-center" rowspan="2">
+
+            </th>
         </tr>
 
         <tr class="text-center align-content-center">
@@ -42,22 +45,42 @@
             <tr>
 
                 <td>
-                    fonni nomi
+                    @item.Name
                 </td>
                 <td>
-                    foni dasturi
+                    @item.Program?.Name
                 </td>
                 <td>
-                    fani mavzusi
+                    @item.Themes?.Name
                 </td>
-                <td>
-                    asosiy adabiyot
+                <td style="max-width:150px;">
+                    @if (item.Literatures!=null)
+                    {
+                    @foreach (var literature in item.Literatures)
+                        {
+                        <div class="badge badge-secondary">
+                            @literature.Name
+                        </div>
+                        }
+                    }
+                </td >
+
+
+                <td style="max-width150px"> 
+                    @if (item.AdditionalLiteratures!=null)
+                    {
+                         @foreach (var literature in item.AdditionalLiteratures)
+                    {
+                        <div class="badge badge-secondary">
+                            @literature.Name
+                        </div>
+                    }
+                    }
                 </td>
-                <td>
-                    Qo'shimcha
-                </td>
-                <td>
-                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id">Edit</a> 
+
+
+                    <td>
+                        <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id">Edit</a> 
                     <a asp-action="Details" class="btn btn-success" asp-route-id="@item.Id">Details</a> 
                     <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
                 </td>
