@@ -13,49 +13,77 @@
     <thead>
         <tr>
             <th class="text-xl-center" rowspan="2">
-                CCC
+                Fan Nomi
+            </th>
+            <th class="text-xl-center" rowspan="2">
+                Fan Dasturi
+            </th>
+            <th class="text-xl-center" rowspan="2">
+                Fan Mavzusi
             </th>
             <th colspan="2" class="text-center">
                 Adabiyotlar
             </th>
-            </tr>
-                            
+        </tr>
+
         <tr class="text-center align-content-center">
-                                <td >
-                                    Asosiy
-                                </td>
-                                <td >
-                                    Qo'shimcha
-                                </td>
-       </tr>
-    </thead>
-    <tbody>
-        <tr>
             <td>
-            a
+                Asosiy
             </td>
             <td>
-                123
-            </td>
-            <td>
-                123
+                Qo'shimcha
             </td>
         </tr>
-    </tbody>
-</table>
-     @*@foreach (var item in Model) 
-     {
-        <div class="card border-primary mb-3" style="max-width: 20rem;">
-                    <div class="card-header">@Html.DisplayFor(modelItem => item.Name)</div>
-                    <div class="card-body">
-                        <h4 class="card-title">Primary card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-            
-                    <a class="btn btn-warning " asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
-                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
 
-        </div>}*@ 
+                <td>
+                    fonni nomi
+                </td>
+                <td>
+                    foni dasturi
+                </td>
+                <td>
+                    fani mavzusi
+                </td>
+                <td>
+                    asosiy adabiyot
+                </td>
+                <td>
+                    Qo'shimcha
+                </td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id">Edit</a> 
+                    <a asp-action="Details" class="btn btn-success" asp-route-id="@item.Id">Details</a> 
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+</table>
+
+
+
+
+@*@foreach (var item in Model)
+    {
+       <div class="card border-primary mb-3" style="max-width: 20rem;">
+                   <div class="card-header">@Html.DisplayFor(modelItem => item.Name)</div>
+                   <div class="card-body">
+                       <h4 class="card-title">Primary card title</h4>
+                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                   </div>
+
+                   <a class="btn btn-warning " asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                   <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+       </div>}*@
+
+
 
 
 
