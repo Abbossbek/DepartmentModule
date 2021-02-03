@@ -4,11 +4,25 @@
     ViewData["Title"] = "Select";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
+  <table class="table">
+            <tr class="table-active">
+                <td colspan="1">
+                    <input type="file" />
+                    <br />
+                    <a class="btn btn-success">
+                        Save
+                    </a>
+                </td>
+
+                
+                <td colspan="2">
+                    <a asp-action="Create" class="btn btn-primary">Search Google</a>
+                </td>
+            </tr>
+        </table>
+
 <table class="table">
     <thead>
         <tr>
@@ -22,23 +36,24 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Url)
-            </td>
-            <td>
-                <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id">Edit</a>
-                <a asp-action="Details" class="btn btn-success" asp-route-id="@item.Id">Details</a>
-                <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Url)
+                </td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Details" class="btn btn-success" asp-route-id="@item.Id">Details</a>
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
 
-                <a asp-controller="Subjects" asp-action="Select" class="btn btn-primary" asp-route-id="@item.Id">Select</a>
+                    <a asp-controller="Subjects" asp-action="Select" class="btn btn-primary" asp-route-id="@item.Id">Select</a>
 
-            </td>
-        </tr>
-}
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

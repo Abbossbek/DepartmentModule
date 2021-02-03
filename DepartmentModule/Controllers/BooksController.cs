@@ -51,8 +51,30 @@ namespace DepartmentModule.Controllers
         }
 
         // GET: Books/Create
+        List<Book> books = new List<Book>()
+        {
+            new Book(){Id=1, Name="Fizika",Url="Hksachkas"},
+            new Book(){Id=1, Name="Fizika",Url="Hksachkas"},
+            new Book(){Id=1, Name="Fizika",Url="Hksachkas"}
+        };
+        List<Book> books2 = new List<Book>()
+        {
+            new Book(){Id=1, Name="Matematika",Url="Hksachkassgseg eg seg"},
+            new Book(){Id=1, Name="English",Url="Hksachkassgsdgsdg "},
+            new Book(){Id=1, Name="C#",Url="Hksachkas sdvsd seg"}
+        };
+        public async Task<IActionResult> Save(int? Id)
+        {
+            return View();
+        }
+        public async Task<IActionResult> GoogleSearch()
+        {
+            ViewBag.fun = books2;
+            return View("Create");
+        }
         public IActionResult Create()
         {
+            ViewBag.fun = books;
             return View();
         }
 
