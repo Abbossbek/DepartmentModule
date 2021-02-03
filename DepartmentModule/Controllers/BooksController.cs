@@ -18,7 +18,7 @@ namespace DepartmentModule.Controllers
         private readonly DepartmentModuleContext _context;
         IWebHostEnvironment _appEnvironment;
 
-        public static bool AddingLiterature { get; private set; }
+        public static BookType BookType { get; private set; }
 
         public BooksController(DepartmentModuleContext context, IWebHostEnvironment appEnvironment)
         {
@@ -159,16 +159,25 @@ namespace DepartmentModule.Controllers
         
         public async  Task<IActionResult> AddLiterature()
         {
-            AddingLiterature = true;
-            return View("Index", await _context.Book.Where(x =>
+            BookType = BookType.Literature;
+            return View("Select", await _context.Book.Where(x =>
             !SubjectsController.Current.Literatures.Contains(x)).ToListAsync());
         }
         public async Task<IActionResult> AddAdditionallLiterature()
         {
-            AddingLiterature = false;
-            return View("Index", await _context.Book.Where(x=>
+            BookType = BookType.AdditionalLiterature;
+            return View("Select", await _context.Book.Where(x=>
             !SubjectsController.Current.AdditionalLiteratures.Contains(x)).ToListAsync());
         }
-
+        public async Task<IActionResult> AddProgram()
+        {
+            BookType = BookType.Program;
+            return View("Select", await _context.Book.ToListAsync());
+        }
+        public async Task<IActionResult> AddThemes()
+        {
+            BookType = BookType.Themes;
+            return View("Select", await _context.Book.ToListAsync());
+        }
     }
 }

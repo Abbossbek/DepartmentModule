@@ -19,4 +19,11 @@
     <Folder Include="wwwroot\Files\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Subjects\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

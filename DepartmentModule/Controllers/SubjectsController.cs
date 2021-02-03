@@ -96,7 +96,6 @@ namespace DepartmentModule.Controllers
             {
                 return NotFound();
             }
-            
             var subject = _context.Subject
                 .Include("Program")
                 .Include("AdditionalLiteratures")
@@ -126,7 +125,8 @@ namespace DepartmentModule.Controllers
             {
                 try
                 {
-                    _context.Update(subject);
+                    Current.Name = subject.Name;
+                    _context.Update(Current);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -142,7 +142,7 @@ namespace DepartmentModule.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(subject);
+            return View(Current);
         }
 
         // GET: Subjects/Delete/5
@@ -180,25 +180,48 @@ namespace DepartmentModule.Controllers
         }
         public async Task<IActionResult> Select(int? id)
         {
-            if (id == null || Current==null)
+            
+            if (id == null || Current == null)
             {
                 return NotFound();
             }
-
-            if (BooksController.AddingLiterature)
+            var book = await _context.Book.FindAsync(id);
+            switch (BooksController.BookType)
             {
-                var book = await _context.Book.FindAsync(id);
-                Current.Literatures.Add(book);
-                await _context.SaveChangesAsync();
+                case BookType.Program:
+                    Current.Program = book;
+                    break;
+                case BookType.Themes:
+                    Current.Themes = book;
+                    break;
+                case BookType.Literature:
+                    Current.Literatures.Add(book);
+                    break;
+                case BookType.AdditionalLiterature:
+                    Current.AdditionalLiteratures.Add(book);
+                    break;
+                default:
+                    break;
             }
-            else
-            {
-                var book = await _context.Book.FindAsync(id);
-                Current.AdditionalLiteratures.Add(book);
-                await _context.SaveChangesAsync();
-            }
-            return View("Edit",Current);
+            
+            return View("Edit", Current);
         }
-   
+        public async Task<IActionResult> RemoveLiterature(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            Current.Literatures.Remove(Current.Literatures.First(x => x.Id == id));
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> AddProgram()
+        { 
+            View("Edit", Current);
+
+            return View("Index");
+        }
+
     }
 }
