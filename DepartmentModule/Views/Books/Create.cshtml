@@ -7,29 +7,63 @@
 
 <br />
 
-
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-8 col-xs-offset-2">
-                <div class="input-group">
-                    <input type="hidden" name="search_param" value="all" id="search_param">
-                    <input type="text" class="form-control" name="x" placeholder=".ppt pdf doc docx Search for Google...">
-                    <span  class="input-group-btn">
-                        <a asp-controller="Books" asp-action="GoogleSearch"  class="btn btn-success">
-                            <span  class="glyphicon glyphicon-search">                              
-                            </span>
-                        </a>
-                        
-                    </span>
-
+<div class="border-dark">
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <table class="table">
+        <tr class="table-success">
+            <td>
+                <div class="form-group">
+                    <label  class="control-label">Select your local disk</label>
+                    <input asp-for="Url" type="file" name="bookUrl">
+                    <span asp-validation-for="Url" class="text-danger"></span>
                 </div>
+            </td>
+        </tr>
+        <tr class="table-success">
+
+            <td>
+                <div class="form-group">
+                    <label  class="control-label"> As File Name</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+
+            </td>
+
+        </tr >
+    </table>
+   
+   
+   
+</form>
+</div>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <div class="input-group">
+                <input type="hidden" name="search_param" value="all" id="search_param">
+                <input type="text" class="form-control" name="x" placeholder=".ppt pdf doc docx Search for Google...">
+                <span class="input-group-btn">
+                    <a asp-controller="Books" asp-action="GoogleSearch" class="btn btn-success">
+                        <span class="glyphicon glyphicon-search">
+                        </span>
+                    </a>
+
+                </span>
+
             </div>
         </div>
     </div>
+</div>
 <br>
 <table class="table table-hover">
     <tr class="table-active">
-        <th >
+        <th>
             Name
         </th>
         <th>
@@ -64,13 +98,13 @@
 
 
 
- 
-
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
 
 
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

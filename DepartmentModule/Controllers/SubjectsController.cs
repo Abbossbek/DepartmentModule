@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace DepartmentModule.Controllers
 {
+
     public class SubjectsController : Controller
     {
         private readonly DepartmentModuleContext _context;
@@ -215,7 +216,15 @@ namespace DepartmentModule.Controllers
             Current.Literatures.Remove(Current.Literatures.First(x => x.Id == id));
             return RedirectToAction(nameof(Index));
         }
-
+        public async Task<IActionResult> RemoveAdditionalLiterature(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            Current.AdditionalLiteratures.Remove(Current.AdditionalLiteratures.First(x => x.Id == id));
+            return RedirectToAction(nameof(Index));
+        }
         public async Task<IActionResult> AddProgram()
         { 
             View("Edit", Current);

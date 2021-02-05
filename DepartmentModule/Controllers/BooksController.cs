@@ -10,9 +10,11 @@ using DepartmentModule.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DepartmentModule.Controllers
 {
+    [Authorize]
     public class BooksController : Controller
     {
         private readonly DepartmentModuleContext _context;
@@ -83,17 +85,35 @@ namespace DepartmentModule.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Url")] Book book)
+        public async Task<IActionResult> Create([Bind("Id,Name,Url")] Book book,[Bind("bookUrl")]IFormFile bookUrl)
         {
             if (ModelState.IsValid)
             {
+                Book _book = new Book();
+                _book = book;
+                book = Upload(bookUrl);
+                book.Name = _book.Name;
                 _context.Add(book);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(book);
         }
-
+        public Book Upload(IFormFile uploadedFile)
+        {
+            if (uploadedFile != null)
+            {
+                // путь к папке Files
+                string path = "/Files/" + uploadedFile.FileName;
+                // сохраняем файл в папку Files в каталоге wwwroot
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                {
+                    uploadedFile.CopyTo(fileStream);
+                }
+                return new Book { Name = uploadedFile.FileName, Url = path };
+            }
+            return null;
+        }
         // GET: Books/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -182,24 +202,24 @@ namespace DepartmentModule.Controllers
         public async  Task<IActionResult> AddLiterature()
         {
             BookType = BookType.Literature;
-            return View("Select", await _context.Book.Where(x =>
+            return View("Index", await _context.Book.Where(x =>
             !SubjectsController.Current.Literatures.Contains(x)).ToListAsync());
         }
         public async Task<IActionResult> AddAdditionallLiterature()
         {
             BookType = BookType.AdditionalLiterature;
-            return View("Select", await _context.Book.Where(x=>
+            return View("Index", await _context.Book.Where(x=>
             !SubjectsController.Current.AdditionalLiteratures.Contains(x)).ToListAsync());
         }
         public async Task<IActionResult> AddProgram()
         {
             BookType = BookType.Program;
-            return View("Select", await _context.Book.ToListAsync());
+            return View("Index", await _context.Book.ToListAsync());
         }
         public async Task<IActionResult> AddThemes()
         {
             BookType = BookType.Themes;
-            return View("Select", await _context.Book.ToListAsync());
+            return View("Index", await _context.Book.ToListAsync());
         }
     }
 }

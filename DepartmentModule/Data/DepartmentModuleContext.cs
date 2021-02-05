@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using DepartmentModule.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace DepartmentModule.Data
 {
-    public class DepartmentModuleContext : DbContext
+    public class DepartmentModuleContext : IdentityDbContext
     {
         public DepartmentModuleContext (DbContextOptions<DepartmentModuleContext> options)
             : base(options)
         {
-            Database.EnsureCreated();
+          //  Database.EnsureCreated();
         }
 
 

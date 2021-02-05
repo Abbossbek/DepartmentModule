@@ -1,0 +1,595 @@
+2:
+{ 
+1. HotKey ishlamayabdi.
+2. Destvia-> Sahranet tugmasi Menu dagi bilan bir xil emas[isEnable=false har doyim]
+3. Tugmalarni Enable to'g'rlash kerak. 
+4. Izmnet tugmasi ishlamayabdi.
+5. Help tugmasni icon yoq ekan.
+6. ->Width and Higth to'g'lash kerak.
+7. Redaktravaniya kod isEnablat=false.
+8. Svet tugmasi ishlamayabdi
+9. Vevesti spisko oynasida ishga tishganda qotib qoldi.
+10. Nastroyka tugmasidagi -> ToolTip,
+11. Jadval ustunlari almashganda Primenit,ok otmena tugmalari ishlamaybdi.Standartni nastroyka tugmasi ishlamayabdi.
+12. DataGrid -> Uroven column nol chiqib qolgan harif yozilmasligi kerak,
+13.Klavatura yozilganda qidruv chiqyabdi, Enetr bosilganda izment tugmasi ishlaganday bo'lyabdi
+}
+3.
+{
+1. DataGrid=> Column width va Higth to'g'lash kerak.
+2. Naytdi=> tugmasi ishlamayabdi. 
+3. Element=> Vid Analitiki obketov va Organizatsiya ga Tanlanma elementlar yoq.Element qo'sha olmadim.
+4. Skaprovat bosilganda MessageBox1C chiqib qolyabdi
+5. Elementda Lupa bosilganda Kursor Text yozishni boshlashga tayor turish kerak Ishlamayabdi
+6. Destvia Menusida Icon va Text stalynida kamchlik bor.
+7. Izmenit Form tugmasiga boshqa oyna ulanga.
+8. Vevesti spisko oynasida ishga tishganda qotib qoldi.
+9. Nastroyka tugmasidagi -> ToolTip,
+10. Jadval ustunlari almashganda Primenit,ok otmena tugmalari ishlamaybdi.Standartni nastroyka tugmasi ishlamayabdi.
+11. DataGridga ma'lumot qo'sha olmaganim uchun boshqa conpanentalarni tekshra olmadim.
+}
+4.
+{
+1. Conpanenta lupa tugmasi bosilganda yozish uchun kursor text maydoniga borish kerakedi.
+2. Grupda Banki oynasi ochilmadi.
+3. Otklichon odbor tugmasi isEnable ni tuzatish kerak.
+4. DavavitIsKlassifikatora Bankov tugmasi ishlamadi.
+5. Izmenet tugmasi xato qilingan.
+6. Skaperavot tugmasixato qilingan.{Boshqa oyna ochilyabdi}
+7. Del{Udalet } tugmasi ishlamayabdi.
+8. Ierarxi tugmasi boilganda otvordi.
+9. MenuContext=> Urovrn verx, Uroven vniz tuglalari bosilgada otvordi.
+10. RedaktiravaniyaDialoge tugmasi ishlamadi.	
+11. Element ochilganda Naminavanita textda kursor turish kerak va Lupa bosilganda yangi oyna ochilish kerak.
+12. Width and Hight ni to'g'lash kerak.
+13. ShablonPlatejnogoPorucheniya da [...] tugmasi ishlamayabdi
+14. Menu=> File tugmasi ishlamayabdi.
+15. skaperavot tugmasi ishlamayabdi
+16. Gorod uchun text uzinligi cheklangan.
+17. Adress Lupasi ishlamayabdi.
+18. Korr Schot va MFO maydonlari uchun text uzinligi cheklangan.
+19. Zapisat bosilganda oyna yoqolib qolyabdi. =>yangi oyna ochiladi, xato kiritganda ularni etadigan oyna ochilish kerak 
+20. DataGrid=> Select qilinganda to'liq bir qator belglanmasligi kerak
+
+}
+5
+{
+1. Kirganda DataGrid select bo'lish kerak.
+2. Element=> Ok tugmasi bosilganda element oynasi yopilmadi. va qotib qoldi oyda
+3. Skaprvot tugmasi bosilganda otvordi.
+4. Udalet tugma bosilganda otvordi.
+5. Svet tugmasi ishlamadi
+6. OtborPoZnacheni tugmasi bosilganda otvordi.
+7. DataGrid=> ma'lumotlarni o'zgartrib bo'lyabdi. yangi ma'lumot qo'shilgada uni ko'rsatmayabdi qayta yopib ochganda qo'shlyabdi.
+}
+6
+{
+1. Yangi ma'luot qo'shib bo'lmadi
+2. Datarid=> Select qilinganda bita qator to'liq belglanyabdi, Style ham buzilgan
+3. Skapravot,Izmenit tugmalari ishlamadi.
+
+}
+7
+{
+1. isha tushganda DataGrid columni select bo'lmadi.
+2. Element=>Kod text uzinligi 3 ta. Davavit tugmasi bosilganda otvordi. Width Hidth ni to'g'lash kerak. ma'lumot qo'shilganda DataGridga yuklanmadi.
+3. DataGrid Style buzilgan. belglanganda bita qator belglanib ketyabdi.Skapravot Izmeni tugmalar ishlamadi.
+4. Podbor is MKV forma bosh ochildi.
+5. Redaktravani Dialog tugmasi 
+6. KursorValuta oynasida ToolBar qilinmagan Dovavit tugmasi ishlamadi. Shu oynani hamma menu itemlarni ishlashni ko'zdan kechrish kerak.
+
+
+}
+8
+{
+1. Ma'lumot qo'sha olmadi.
+2. Nayti tugmasi ishlamadi.
+}
+9
+{
+1. oyna ochilganda datagrid select bo'lmayabdi.
+2. Skaprovat qilganda aslidagidek qilmayabdi.
+3. ContextMenu styli buzilgan. 
+4. DataGrid styl buzilgan, Belglangan vaqti bitta qator belglanyabdi.
+5. delete tugmasi ishlamayabdi.
+}
+10
+{
+1. Davavit qilinganda DataGridga srazu yuklanib qolmayabdi. select bo'lganda bitta qator to'liq belglanib qolyabdi.
+2. Skaprvot va Izmenti tugmalar ishlamayabdi.
+3. yangi kirganda DataGrit belglanib qolmayabdi.
+4. Organizatsiya conpanentasi uchun dotLupa qilinmagan.
+}
+11
+{
+1. Element qo'shilganda DataGrid ga ma'lumoq qo'shilmayabdi
+2. Izmenit yoki Skaprvot qilganda bir ishlab bir ishlamayabdi.
+}
+12
+{
+1. Menu bilan Destvani tugmalar bir hil ishlamayabdi
+2. Tugmalar kanbinatsiyasida tugmani yonib o'chishida xatolik bor Otklichon Otbor
+3. DataGridga ma'lumot 
+}
+13
+{
+1. Nasroyka Spisok oynasi ulanmagan.
+2. Izmenit tugmasi ishlamayabdi
+3. Skoperavot tugmasi ishlamayabdi.
+4. Vivest spisok oynasi bo'sh ochilyabsi. tugmalar ishlamayabdi va tooltip qilinmagan
+5. Izmenit Form tugmasi ishlamayabdi
+Elemet
+2.1 DaytaGrid stylda kamchlik bor
+2.2 Peremest tekushe element tugmasi yaxshi ishlamayabdi.
+2.3 Kodni avfomatik va qo'lda kirtish imkon bor va uni MessageBox da so'raladi bizda bunday emas.
+2.4 Destviya tugmasi ichida dovoviy qilmayabdi.
+2.5 Dovovit qilganda DataGrid 2 indexga BeginEditeEnding ishlayabdi aslida 1 index da bo'lish kerak.
+2.6 destviyani ichidagi Help oynasi ulanmagan.
+2.7
+}
+14
+{
+1. dataGridga yangi ma'lumot qo'shyotgan vaqti otvoryabdi
+2. Perayti tugmasi ishlamayabdi.
+3. Filter oynasin ListBox lardan aytim almashishda xatolik yuz berdi.
+4. Yangi ochilgan vaqtda DataGrid oynasi select bo'lib tursa ham Menu tugmalar yonmayabdi
+5. Skoperavot tugmasi ishlamayabdi
+6. Izmenit tugmasi ishlamayabdi
+7. Tugmalarni kanbenatsiya vaqtida chalkashliklar bor Aslidek qilish kerak.
+}
+15
+{
+1.Obnavit Lgot foreground ni to'g'rlash.Tugmaga Clickni yozish kerak.
+2. DataGrid da ma'lumot qo'shilangani uchun to'liq test qila olmadim.
+
+}
+16
+{
+1. Dovovit qilgan vaqtda tugmalarni yonib o'chishda xatolik bor,
+2. Dovovit qilganda kegin Soxranit tugmasi bosilganda DataGritga select bo'lib tursa ham Menu tugmalar ochib qoldi.
+3. DataGrid ni Kod columni faqat raqam va Length 5 ga teng bo'lish kerak.
+4. Skoperavot tugmasi ishlamadi.
+5. Vivest tugmasi yaxshi ishlamaydi
+6. 
+}
+17
+{
+1. ToolTip qilinmagan.
+2. Premset element dogovor
+3. Nayti Mestapolajeniya tugmasi ishlamadi.
+4. Izmenit va Skoperavot tugmalar ishlamayabdi
+5. Oyna yopilganda SelectingChange function da xatolik berdi.
+6. Peremestit Elemet tugmasiga boshqa oyna ulangan va osha oynani yopganda xatolik kelib chiqyabdi.
+7. Dovovit qilganda oyna bir foal bo'lib List oynasini orqasiga o'tib qolyabdi.\
+8. Yangi oyna ochilsa uni yopishda xatolik beryabdi
+}
+18
+{
+Elemet
+1. Ok tugmasi bosilganda kirtlgan ma'lumotlar Listning DataGrid ma'lumot yuklanmayabdi.
+2. Element yoploygan vaqtida windows closeing da xatolik chiqyabdi.
+List
+1. DataGrid select bolganda ham tugmalar yonmayabdi.
+
+3.
+
+}
+19
+{
+1. Dovovit qilganda otvordi.
+2. Izmenit va Skoperavot tugmalar ishlamadi.
+3. Dovovit qilib Soxranit tugmasi bosilganda Menu tugmalar yonim ochmayabdi
+4. ContextMenu Bacground to'g'lash kerak.
+5. Obnavit tugmasi clickni to'g'rlash kerak.
+6. Select bo'lmagan vaqti ham menu tugmalar yoib turibdi.
+7. List oynasi ochilganda Ma'lumotlar yuklanmayabdi.
+8. Delete tugmasi ishlamayabdi.
+9. Redaktravoniya kod tugmasi ishlamayabdi.
+10.Otbor po Znacheniya  SortByValue tugmasi ishlamaadi.
+11. Izmenit tugmasi bir ishlab bir ishlamayabdi.
+}
+20
+{
+Element
+1. Dovovit qilinganda Naimenovanie maydoniga kursor turish kerak.
+2. Dovovit tugmasi bosilganda DataGrid da ma'lumot qo'shilish kerakemas. Yangi oyna ma'lumot qo'shish kerak edi 
+va DataGrid ni columni kam.
+3. Menu tugmalar ishlamayandi.
+4. Kod maydoni belglanish kerak, 3 ta maydon select bo'lish kerak.
+5. Peryati tugmasi ishlamayabdi.
+6. 
+List
+2.1 Izvnet va Skoperavot tugmalar ishlamayabdi.
+2.2 Menu Tugmalar hech biri ishlamayabdi. 
+2.3 Otbor po Znacheni tugmasi ishlamaydi.
+2.4 Tree oynasi + icon style tuzatish kerak.
+3.5 Destviya tugmalar ishlamaydi.
+3.6 ContextMenu Bacground tuzatish kerak,
+}
+21
+{
+1. Oyna ochilganda aslidek emas Width  va Hidth larni tuzatish kerak
+2. Bacground tuzatish kerak.
+}
+22
+{
+Element
+1.Width va Higth larni tuzatish kerak,
+2. Fizichiski lisi dan ma'lumot qo'shib bo'lmadi Fizichiski lis Vibrat oynasinig closing function xatolik chiqdi.
+3. Menu tugmalar yonib ochishida xatolik bor,
+4. Close qilganda Saxlaymi yoqmi so'rovi chiqmayabdi.
+5. 
+List
+2.1 Menu tuglarni yonib ochishni to'g'rlash kerak,
+2.2 Izmenti va skoperavot tugmalar ishlamayabdi.
+2.3 Iyarxichiski prosmotir tugmasi ishlamayabdi
+2.4 Context Menu larni Bacground ni to''grlash kerak.
+2.5 Tugmalarni kanbinatsiya vaqtida yonib ochish ni to''grlash kerak.
+2.6 Tree aslidagidaymas
+2.7 Oyna yangi ochilganda DataGrid da select bo'lmayabdi.
+2.8 
+Grupa
+3.1 Menu tugmalarni tog;rlash kerak va clik ni  ham to'g'lash kerak.
+3.2 Ok Zapisat Zakrit tugmalar ishlamayabdi.
+3.3 Oynani width va Hidth to'g'rlash kerak.
+}
+23
+{
+List
+1. Menu tugmalarni yonib ochishda nomutanosiblik bor aslidek qilish kerak.
+2 Context Menu Bacground ni to'g'rlash kerak.
+3. Yangi ochilgan vaqtda select bo'lib turib Menu tugmalar yonmayabdi,
+4. Skoperavot tugmasi ishlamayabdi.
+5. Otbor po Znacheniya tugmasi yonmayabdi.
+6. Vivesti oynasiga ma'lumot borMAYABDI,
+7. Vivest tugmalar ishlamayabdi. otment tugmasi bosilganda oyna yopilmasdan boshqa oyna ochilyandi.
+8. Nastroyka oynai iconcasi yoq title yoq, kortinka filte chiqmadi, tooltip qilinmagan.
+9. Nastroyka oynasinin to'g'rlash kerak.
+10. Istoriya otbor  va Otklichon otbor tugmalar ishlamayabdi,
+11. Destviya va Menu tugmalar o'rtasida bir xilik yoq.
+12. Sartrovka ishlayabdi ln Belglanishni ko'rsatmayabdi 
+}
+24
+{
+Element
+1.1 Variant vcheta Maydoniga ma'lumot yuklanmayabdi. 
+1.2 Vit Logot maydonida [...] qolib ketgan va unda Vibrat  oynasi ochilish kerak edi
+1.3 Zapisat va Zakrit tugmalar ishlmayabdi.
+1.4 Zakrit qilganda Saqlaymi yoqmi degan so'rov chiqmayabdi.
+1.5 Menu tugmalar ishlamayabdi.
+
+List
+1.3 Izmenit Skoperavot Soxranit tugmalar ishlamayabdi.
+1.4 Menu tugmalar yonib ochishda xatolik bor.
+1.5 Destviya bilan Menu Tugmalrni yonib ochishda nomutonosiblik bor.,
+1.6 ContextMenu ni background to''grlash kerak,
+1.7 Pereyti va Svet tugmalar ishlamayabdi.
+1.8 Nastroyka va Viviesti oynalarda xatoliklar bor.
+  
+}
+25
+{
+Element
+1.1 Koeffisient raspredeleniya po mesta ning moydonlaridan birontasiga 0.00 bo'lib saqlansa List ni DataGrid da bosh bo'lib ko'rsatish kerak.
+1.2 Svet tugmasi ishlamadi
+List
+
+2.2 Delete tugmasi bosilganda xatolib kerdi.
+2.3 oyna ochilgan vaqtda DataGritda select bo'lmayabdi.
+2.4 oyna ochilganda select bo'lmayabdi.
+2.4 DataGrid style sozlash kerak.
+2.5 Delete tugmasi bosilganda xatolik kelib chiqdi.
+2.6 Nastroyka va Vivest oynalarda kamchliklar bor.
+}
+2.6 
+{
+1. Dovovit tugma bosilganda Element oynasi ochilmayandi. Izmenit va Skoperavot tugmalr ishlamayabdi, 
+2 DataGrid staylini to'g'rlash kerak.
+3. Elementi bor bo'lgan Sprovchnik edi ln Bizda Elementsiz qilingan
+4. Context Menu BackGround to'g'rlash.
+5. Otbor po znacheniy tugmasi ishlamayabdi. Istoriya otbor tugmasi har doyim ochik
+6. 
+}
+27
+{
+List
+1. Sazdat tugmasi ishlamadi
+2. Menu toolbar qilinmagan
+3. ToolTip qilinmagan
+4. Nayti tugmasi ishlamadi
+5. Peremest Grup tugmasi ishlamadi.
+6. Destviya ichidagi Help oynasi ulanmagan.
+7. Destviya tugmalarni clik lari ko'zdan kechrish kerak,
+8. Izmenit Forma tugmasi ishlamdi.
+9. vivest tugmasi ishlamayabdi.
+}
+28
+{
+1. DataGrit stylida kamchilik bor
+2. Otbor po znacheniya tugmasi bosilganda xatolik berdi.
+3. oyna qayta ochilganda select bo'lib qolish kerak va select bo'ldanda tugmalr yoish kerak.
+4. Delete tugmasida xatolik berdi/ Udalit ne postrestva
+5. Istoryiya va Otklichon otbor tugmalr yonmayabdi.
+6. Sarterovka qilingan vaqtda Otkilichon otbor tugmasi yonib qoldi
+7. Menu tugmalarni kanbinasta vaqtda yonib o'chishni tekshrish kerak.
+8. Redakteravoni kod tugmasi ishlamadi.
+}
+29
+{
+List
+1. Pereyti tugmasi ishlamdi.
+2. Oyna DataGrid ochilganda select bo'liq qolish kerak va index 1 select bo'lish kerak.
+3. Peremestit element tugmasi ishlamadi. 
+4 Ustrovstva pametka udaleniya tugmasini iconkasini to'g'rlash kerak.
+Element
+1. Adminstrator grop maydonida DotClose bo'lish kerak.
+2. Yangi malumoq qo'sha olmadim Polzavatel Listda xatolik chiqdi,.
+3 Menu Tugmalar ishlamdi Zapisat qilmadi 
+4 Element oynasi yoplyotganda Saqlayni yoqmi so'rovi chiqmadi.
+5 Element ma'lumot kirtib ok tugmasi bosilganda Oyna yoplib Listdagi DataGridga ma'lumoq qo'shilmayabdi.
+6. Dovovit tugmasi bosilganda xatolik kelib chiqdi.
+7. Sastov grup maydonidagi borach tugmalar ishlamadi. 
+}
+30
+{
+List
+1. Yangi ma'lumot qo'shilganda DataGrid yuklanmayabdi.
+2. Context Menu ni tuzatish kerak
+3. Yangi ma'lumot qo'shilganda, kod avtamatik berilmayabdi.
+4. Izvnet va Skoperavot tugmalar bosilganda Element oynasiga ma'lumotlar bosh boryabdi.
+5. Destviyadagi Izmenti va Delete tugmalrni icon tuzatish kerak.
+6. 3 ta Otbor tugmalar ishlamayabdi.
+7 DataGrid stilni tuzatish kerak
+8. Nastroyka va Vivest oynalarni tuzatish kerak [Umumiy xatolik]
+Element
+1. Sastov grup maydonidagi borach tugmalar ishlamadi.
+2. Menu tugmalar ishlamayabdi va Tugmalarni yonib ochishni to'g'rlash kerak
+3. Zapisat bosilgansa Sazdat novi Kaperavot tugmasi ishlamadi
+4. Oyna yoplyotganda Saqlaymi yomi so'rovi chiqmayabdi.
+5. 
+}
+31
+{
+1. Context Menu tuzatish.
+2. Elemet oynasida o'zgarish bo'lgansa Saqlaymi yoqmi degan so'rov so'ralmadi.
+3. Otbor po Znacheniy tugmasida xatolik berdi.
+4. oyna qayta ochilgansa DataGrid select bo'lmayabdi.
+5. DataGrid staylini tuzatish kerak.
+6. Vivest{Bosh maydon ochilyabdi} Va Nastroyka oynalar tuzatish kerak
+7. 
+}
+32
+{
+List
+1. Skoperavot tugmasi bosilganda xatolik chiqdi.
+2. Obnavit tugma bosilganda xatolik chiqdi.
+3. Tree oynasida kamchlik bor{File chiqib turish kerak} bizda bonbosh oyna
+4. Peremest element tugmasi ishlamadi.
+5. Nayti MestaPolajenita tugmasiga tooltip qilinmagan va tugma ishlamadi
+6. Dovavit qilinganda eski kirtlgan ma'lumotlar yo'qolib qolyabdi.
+7. Delete tugmasi bosilganda xatolik kelib chiqdi.
+8. Davavit grupa tugmasi qo'shilganda DataGrid ni Naimenovanie katakchasiga kursor borish kerak. bizda bitta qator 
+select bo'lib qolmoqda. 
+9. Irarxichiski prosmotir tugmasi bosilganda xatolik kelib chiqdi.
+10.Urven vniz tugmasi bosilganda xatlik chiqdi.
+11. DataGridaga kirtlgan ma'lumot saqlanmayabdi.
+12. Naydi dreviya tugmasi ishlamadi.
+13. Destviya bilan Menu tugmalrni yonib o'chishda bir xilik yoq. clik larni ham ko'zdan kechrish kerak.
+14.
+}
+
+34
+{
+List
+1.1 Padbor tugmasi ishlamadi
+1.2 svet tugmasi ishlamadi.
+1.3 Destviya bilan Menu tugmalar bir xil emas va clik xosalarni ham tuzatish kerak
+1.4  
+}
+
+35
+{
+List
+1.1 Izmenti delete tugmalar ishlamadi.
+1.2 Destviya bilan Menu tugmalar bir xila emas va Ularni kanbinatsiya vaqtida bit xil yonib ochmayabdi
+ Asliga oxshamaydi.
+1.3 Menu tugmalarni click larni tuzatish kerak.
+Elemet
+2.1 Elemet oynasini Width va Higth ni tuzatish kerak.
+2.2 Menu oynasini clik larni tuzatish kerak, Enable larni tuzatish kerak.
+}
+36
+{
+List
+1.1 Otbor po Znacheniya tugmasi ishmamayabdi.
+1.2 Izmenit tugmasi ishlamayabdi.
+1.3 Skaperovot tugmasi ishlamayabdi.
+1.4 Soxranit tugmasini yonib o'chshini to'g'rlash kerak.
+1.5 Menu va Destva dagi tugmalarni yonib o'chshni to'g'rlash kerak va Tugmalarni yonib ochmayabdi.
+1.6 
+}
+
+37
+{
+List
+1.1 Otbor po Znacheniya tugmasi ishmamayabdi.
+1.2 Izmenit tugmasi ishlamayabdi.
+1.3 Skaperovot tugmasi ishlamayabdi.
+1.4 Destviya bilan Menu conpanentlar bir xil yonib ochmayabdi.
+1.5 Pereyti tugmasi ishlamadi
+Element
+2.1 Zapisat tugmasi ishlamadi
+2.2 Menudagi tugmalar ishlamadi.
+}
+38
+{
+Elemet
+1. Zapisat tugmasi ok tugmasi ishlamaydi.
+2. Elemet oynasidagi knopkasini Enable{yonib o'chish ishlamayabdi}
+3. Kod maydoni to'iq ochilmagan
+4. Skapervot tugmasi ishlamayabdi MessageBox1C oghlantrish chiqmayabdi.
+5. Ushub oynaga ma'lumot qo'sha olmadi. 
+List uchun text qila olmadim.
+2.1 Destva bilan Menu tugmalar yonib o'chish mutanosib emas.
+2.2 ContextMenu bacgroundni to'g'lash kerak.
+2.3 
+}
+
+39
+{
+List
+1. Tree oynasida Hearder column yoq bo'lish kerak, 
+2. Premest element dialog tugmasi har doim o'chiq turibdi
+3. Redaktravaniya dialog tugmasi ishlamadi
+4. Izmenit Skaperavot tugmalar ishlatganimda otvordi.
+5. Dovovit va dovovit Grupa tugmalar element oynasini ochmyabdi.
+6. Menu tugmalarni uchun konbimatsiya vaqtida ochib yonishda xatolik bor.
+7. Context Menu bacgroundni to'g'lasin
+8. Ushbu oynada xatolik juda ko'p element oyni ochalmadim.
+}
+40
+{
+List
+1. Yangi ma'lumot qo'shilganda Otbor po znacheniya tugmasi ishlamayabdi.
+2. DataGrid select bo'lganda bit qator to'liq belglanib qolmoqda va styl da ham kamchlik bor.
+3. Skapirovot tugma bosilganda kod ga fouc tushib BeginEditeEnding ishlash kerak va kod unique bo'lish kerak. va bo'sh  maydon qabul qilmasligi kerak
+bu xaqida ogahlantrish belgisini ham messagebox qilib ko'rsatish kerak.
+4. Otbor po znachenita tugmasi bilan Destviyadagi bir xil yonib ochmayabdi.
+5. Menu dagi tugmalarni kanbenatsiya qilnganda chalchashliklar bor {ya'ni Enabli true/false} 
+}
+41
+{
+List
+1. Tree oynasida header mavjud bo'lmasilgi kerak.
+2. Viviet spiska icon kasi almashib qolgan Destviy ichida.
+2.1 Izmenti Skaperovot delete tugmalar ishlamaydi.
+2.2 Irayx tugmasi ishlamadi.
+2.3 Nayti mestapalajeniya tugmasi ishlamayabdi.
+2.4 Otbor po znacheniya 
+2.5 Peremest element tugmasi ishlamayabdi.
+2.6 Destviya dagi menu bilan Menudagi tugmalar bir xil yonib ochmayabdi.
+Element oynasi uchun
+3. Davavit bosilganda kod selecting bo'lib turibdi Length=3 teg.
+4. Plash maydoni ishlamayabdi
+Vibrat Grupa
+5. ToolTip qolib ketgan.
+6. Dovovit Izmnet Skaperovot delete tugmalar ishlamayabdi
+7. Peremest elemet tugmasi ishlamayabdi.
+Xato chiqib qoldi shu tufatyli To'liq test qilia olmadim.
+}
+42
+{
+List
+1. Dovovit grupa tugmasi ishlamayabdi.
+2. Izmenti Skaperavot tugmasi ishlamay qolyabdi.
+3. Elemet oynasi yasalamgan.
+4. List oynasidagi barcha tugmalarni ko'zdan kechrish kerak.
+}
+43
+{
+1. Dovovit grupa tugmasi ishlamayabdi.
+Element oynasida
+2. Dovovit tugmasi isha tushganda Element oynasi ochilib avtomatik kod berlib uni select bo'lib turibdi va kodni o'zgartisa ham bo'ladi.
+3. Viladelsa ni [...] tugmasi ishlamayabdi.
+4. Raditle ni [...] tugmasi ishlamayabdi. Elemet 
+5.Zapisat tugmasi ishlamayabdi. ishlaganda Menu tugmalar yonish kerak.
+6. Oynani yopyotgan vaqtida saqlaymi yoq so'rovi chiqmayabdi.
+7. Perayti tugmasi ishlamayabdi.
+7.1 Kod bo'sh bo'ls ham saqlaydi ammo aftomatik uzi raqam berib saqlaydi kod null holda saqlanmaydi.
+List
+8. Izmenit Skaprovot tugmalar ishlamayabdi
+9.  Urven vrix/Urven Vnis tugmalarni ishga tushrish kerak har doiym o'chik.
+10. Tree oynasi ishga tushmagan.
+11. Otbor po znacheniy tugmasi ishlamayabdi.
+12. Perayti tugmasi ishlamayabdi.
+13. Premestit element tugmasi ishlamayabdi.
+14. DataGrid da icon chiqmayabdi Header=" " bo'sh maydoni o'chrib qoyish kerak.
+}
+
+44
+{
+Uchbu oyna 1c da ochilmadi bizda ochildi
+1c da ochilmaganligi tufayli tekshra olmadim.
+}
+45
+{
+1. Dovovit bosilganda Element oynasining Kod moydoniga avtomatik value berilmoqda va Value Selecting bo'lgan.Valueni biz o'zgartirsak ham bo'ladi.
+2. Redaktirovat dialog tugmasi ishlamayabdi.
+3. Podbor tugmasi ham ishlayabdi.
+4. Select bo'lganda Izmenit Skaperavot tugmalar yaxshi ishlamayabdi.
+5. Elementda Zapisat bosilganda Menu tugmalari yonmayabdi. Skaperavot tugmasi ham ishlamayabdi. Shu oynani ishlashni qayta ko'rib chiqish kerak.
+6. Iyarxi Prosmotur tugmasi ishlamayabdi.
+7. Otbor is Tekushe tugmasi ishlamayabdi. doiym isEnable false
+8. Peremestit element v durugvoy grupa tugmasi ishlamayabdi har doiym isEnablet false.
+9. Urven vrix/Urven Vnis tugmalarni ishga tushrish kerak
+10. Tree oynasini ko'zdan kechring ma'lumot qo'shiolmayabdi.
+11. Nayti mestapolajeni tugmasi ishlamayabdi.
+12. Element oynasini yopishda Saqlaymi yoq tegan so'rov chiqmayabdi. 
+}
+46
+{
+1. Podbor is MKEi tugmasi ishlamadi,
+2. DataGrid Kod Columni izmeni qilib bo'lmayabdi. 
+3. Sqilganda Kod columni width o'zgaryabdi.
+}
+47
+{
+1. Elementdan yangi ma'lumot qo'shganimizda DataGrid ma'lumot qo'shmayabdi.
+2. Destve bilan Menu Elementlarni isEnable tugmalar bir hil emas.
+3. Qo'shilmagani uchun boshqa tugmalarni tekshira olmayabman.
+}
+48
+{
+1. DataGrid ga ma'lumotlar qo'shilmayabdi, Kirganda Select bo'lmayabdi.
+2. Izmenit Skaperavot va Davavit tuglalarni ishlamayabdi
+3. Podbor is OKCM tugmasi ishlamadi.
+}
+49
+{
+1. davavit qilinganda [Kod] ga  kursor yozishga tayor  borish kerak.
+2. DataGrid da ma'lumot qo'shilganda saqlab qolmayabdi.
+3. Redaktrivat dialog tugmasi ishlamayabdi.
+4. Podbor is OKCM tugmasi ishlamadi.
+5. izmenit skaperavot qilganda ma'lumotlar saqlanmayabdi va DataGrid da Select bo'layabdi
+}
+50
+{
+Elemet
+1. Element ichidagi FIO ma'lumot kiritganda Predstavleni ga yig'lib borish kerak.
+2. Vivesti spisok tugmasni to'g'lash kerak va Nastroyka oynasini ham to'g'lash kerak {Agar nastroyka oynasida nimadur o'zgarsa List oynasida ham shu jaroyon sezilmayabdi}: 
+3. Menu Tugmalar ishlamayabdi Zapisat qilgana Menu tugmalr yonish kerak. Skaperavot qilinmadi,
+4. Adress dlya informirovaniya kont lisia dota{...} ishlamadi
+5. Help tugmasi ishlamadi.
+Oyna yoplyotgan vaqtda Saqlayni yoqmi degan so'rov chiqmadi.
+List
+6. Dapolnayti rekvizit tugmasi ishlamadi.
+7. Pereyti tugmasi ishlamadi,
+8 Otbor po Znacheniya tugmasi bosilganda Otklichon otbor tugmasi yonish kerak va Otklichon otbor boilganda DataGridga Faqat delete bo'lgan maydonlar chiqish kerak.
+9. Obnavit tugma sihlamadi,
+10 Unalit tugma har doim ochiq
+11.
+}
+51
+{
+1. Sprovchnik icon almashtrish kerak. Elementlar uchun ham.
+Element
+1.1 Zapisat tugmasi ishlamadi
+1.2 oynani yopishda Saqlaymi yoqmi so'rovi chiqmadi.
+1.3 [..] tugmalar bosilganda yangi oyna ochilish kerak edi ln ochilmadi. va [..] iconkasi yoqolib qolgan.
+1.4 Element ichidagi TapControllerni 3 tasidadi dovovit tugmasi bosilganda xatolik chiqdi.
+List
+2.1 Peremest Element tugmasi har doim o'chiq
+2.2 
+Grupa Saydeniya
+3.1 Yangi ma'lumot qoshib bo'lamdi Ok tugmasi bosilganda xatolik kelib chiqdi.
+3.1 Zapisat tugmasi boilganda Menu tugmalr yonish kerak edi. Skaperavot tugmasi ishlamadi,
+3.2 Oyna yopishda Saqlaymi yoqmi degan so'rov chiqmadi.
+
+
+
+
+
+
+
+2. ok tugmasida qotib otib yubordi.
+}

@@ -1,0 +1,175 @@
+=================================1==============================
+class  Fuzzy
+    {
+        #region Private filts
+        /// <summary>
+        /// Center: Function Item
+        /// </summary>
+        private double c;
+        /// <summary>
+        /// Left: Function Item
+        /// </summary>
+        private double l;
+        /// <summary>
+        /// Right: Function Item
+        /// </summary>
+        private double r;
+
+        private static Fuzzy result;
+        #endregion
+
+        #region Constructor
+        public Fuzzy(double _c=0, double _l=0,double _r=0)
+        {
+            this.c = _c;
+            this.l = _l;
+            this.r = _r;
+        }
+        #endregion
+
+        #region Public Method
+
+        /// This function  performs the addition operatio. return  object
+        public static Fuzzy operator +(Fuzzy object1, Fuzzy object2)
+        {
+            result = new Fuzzy();
+            result.c = object1.c + object2.c;
+            result.l = object1.l + object2.l;
+            result.r = object1.r + object2.r;
+            return result;
+
+        }
+        // This function  perform a separation operation. return object
+        public static Fuzzy operator -(Fuzzy object1, Fuzzy object2)
+        {
+            result = new Fuzzy();
+            result.c = object1.c + object2.c;
+            result.l = object1.l + object2.r;
+            result.r = object1.r + object2.l;
+            return result;
+        }
+        // This function  performs the multiplication operation. return object
+        public static Fuzzy operator *(Fuzzy object1, Fuzzy object2)
+        {
+            result = new Fuzzy();
+            result.c = object1.c * object2.c;
+            if (object1.c > 0 && object2.c > 0)
+            {
+                result.l = object1.c * object2.l + object2.c * object1.l - object1.l * object2.c;
+                result.r = object1.c * object2.r + object2.c * object1.r + object1.r * object2.r;
+            }
+            else if (object1.c > 0 && object2.c < 0)
+            {
+                result.l = object1.c * object2.r + object2.l * object1.l - object1.l * object2.c;
+                result.r = object1.c * object2.l + object1.r * object1.c + object1.r * object2.l;
+            }
+            else if (object1.c < 0 && object2.c < 0)
+            {
+
+                result.l = object2.r * object1.r - (object1.c * object2.r + object2.c * object1.r);
+                result.r = object1.l * object2.l + (object1.c * object2.l - object2.c * object1.l);
+            }
+            else
+            {
+                result = new Fuzzy();
+            }
+            return result;
+        }
+        // This function performs the division operation. return object
+        public static Fuzzy operator /(Fuzzy object1, Fuzzy object2)
+        {
+            result = new Fuzzy();
+            if (object1.c != 0 && object2.c != 0)
+            {
+                result.c = object1.c / object2.c;
+                result.l = (object1.c * object2.r - object1.c * object2.l) / (object2.c * (object2.c + object2.r));
+                result.r = (object1.c * object2.l + object2.c * object1.r) / (object2.c * (object2.c - object2.l));
+            }
+            return result;
+            return result;
+        }
+        #endregion
+
+        public  string fResult()
+        {
+            return ("C: "+result.c + " L: " + result.l + " R:" + result.r).ToString();
+        }
+
+    }
+
+=====================================2===============================
+public class Interval
+    {
+        #region private fielts
+            private readonly double num;
+            private readonly double den;
+        #endregion
+
+        #region Constructor
+        public Interval(double numerator, double denominator)
+            {
+                if (denominator == 0 || numerator == 0)
+                {
+                    // Nol 
+                    throw new ArgumentException("Denominator cannot be zero.", nameof(denominator));
+                }
+                num = numerator;
+                den = denominator;
+            }
+        #endregion
+
+        #region Public method
+            public static Interval operator +(Interval a, Interval b)
+                => new Interval
+                (
+                    Math.Min(
+                             Math.Min(a.num + b.num, a.num + b.den),
+                             Math.Min(a.den + b.den, a.den + b.num)),
+                    Math.Max(
+                             Math.Max(a.num + b.num, a.num + b.den),
+                             Math.Max(a.den + b.den, a.den + b.num))
+                    );
+
+            public static Interval operator -(Interval a, Interval b)
+                => new Interval
+                (
+                    Math.Min(
+                             Math.Min(a.num - b.num, a.num - b.den),
+                             Math.Min(a.den - b.den, a.den - b.num)),
+                    Math.Max(
+                             Math.Max(a.num - b.num, a.num - b.den),
+                             Math.Max(a.den - b.den, a.den - a.num))
+                );
+
+            public static Interval operator *(Interval a, Interval b)
+                => new Interval
+                (
+                   Math.Min(
+                             Math.Min(a.num * b.num, a.num * b.den),
+                             Math.Min(a.den * b.den, a.den * b.num)),
+                    Math.Max(
+                             Math.Max(a.num * b.num, a.num * b.den),
+                             Math.Max(a.den * b.den, a.den * a.num))
+                );
+
+            public static Interval operator /(Interval a, Interval b)
+            {
+                if (b.num == 0)
+                {
+                    throw new DivideByZeroException();
+                }
+                return new Interval
+                    (
+                    Math.Min(
+                             Math.Min(a.num / b.num, a.num / b.den),
+                             Math.Min(a.den / b.den, a.den / b.num)),
+                    Math.Max(
+                             Math.Max(a.num / b.num, a.num / b.den),
+                             Math.Max(a.den / b.den, a.den / b.num))
+                    );
+            }
+
+            public override string ToString() => $"{num} : {den}";
+
+        #endregion
+    }
