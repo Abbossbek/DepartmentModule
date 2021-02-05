@@ -11,6 +11,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Authorization;
+using System.Text;
+using System.Net;
+using HtmlAgilityPack;
+using System.Web;
 
 namespace DepartmentModule.Controllers
 {
@@ -52,31 +56,64 @@ namespace DepartmentModule.Controllers
             return View(book);
         }
 
-        // GET: Books/Create
-        List<Book> books = new List<Book>()
-        {
-            new Book(){Id=1, Name="Fizika",Url="Hksachkas"},
-            new Book(){Id=1, Name="Fizika",Url="Hksachkas"},
-            new Book(){Id=1, Name="Fizika",Url="Hksachkas"}
-        };
-        List<Book> books2 = new List<Book>()
-        {
-            new Book(){Id=1, Name="Matematika",Url="Hksachkassgseg eg seg"},
-            new Book(){Id=1, Name="English",Url="Hksachkassgsdgsdg "},
-            new Book(){Id=1, Name="C#",Url="Hksachkas sdvsd seg"}
-        };
         public async Task<IActionResult> Save(int? Id)
         {
             return View();
         }
-        public async Task<IActionResult> GoogleSearch()
+        public async Task<IActionResult> GoogleSearch([Bind("query")]string query, [Bind("type")]string type)
         {
-            ViewBag.fun = books2;
+            List<Book> books = new List<Book>();
+            StringBuilder sb = new StringBuilder();
+            byte[] ResultsBuffer = new byte[8192];
+            string SearchResults = "http://google.com/search?q=" + query.Trim() + " filetype:"+type;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(SearchResults);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            Stream resStream = response.GetResponseStream();
+            string tempString = null;
+            int count = 0;
+            do
+            {
+                count = resStream.Read(ResultsBuffer, 0, ResultsBuffer.Length);
+                if (count != 0)
+                {
+                    tempString = Encoding.UTF8.GetString(ResultsBuffer, 0, count);
+                    sb.Append(tempString);
+                }
+            }
+
+            while (count > 0);
+            string sbb = sb.ToString();
+
+            HtmlDocument html = new HtmlDocument();
+            html.OptionOutputAsXml = true;
+            html.LoadHtml(sbb);
+            HtmlNode doc = html.DocumentNode;
+
+            foreach (HtmlNode link in doc.SelectNodes("//a[@href]"))
+            {
+                //HtmlAttribute att = link.Attributes["href"];
+                string hrefValue = link.GetAttributeValue("href", string.Empty);
+                if (hrefValue.ToString().Contains("/url?q=")
+                    && (hrefValue.ToString().ToUpper().Contains("HTTP://") || hrefValue.ToString().ToUpper().Contains("HTTPS://"))
+                    && hrefValue.ToString().ToUpper().Contains(".PDF"))
+                {
+                    int index = hrefValue.IndexOf("&");
+                    if (index > 0)
+                    {
+                        hrefValue = hrefValue.Substring(0, index);
+                        books.Add(new Book() { Name = HttpUtility.HtmlDecode(link.InnerText).Remove(HttpUtility.HtmlDecode(link.InnerText).IndexOf('>')),
+                            Url = hrefValue.Replace("/url?q=", "") });
+                    }
+                }
+            }
+
+            ViewBag.fun = books;
             return View("Create");
         }
         public IActionResult Create()
         {
-            ViewBag.fun = books;
+            ViewBag.fun = new List<Book>();
             return View();
         }
 
@@ -99,10 +136,14 @@ namespace DepartmentModule.Controllers
             }
             return View(book);
         }
-        public Book Upload(IFormFile uploadedFile)
+        public Book Upload(IFormFile uploadedFile, string name = null)
         {
             if (uploadedFile != null)
             {
+                if (name == null)
+                {
+                    name = uploadedFile.FileName;
+                }
                 // путь к папке Files
                 string path = "/Files/" + uploadedFile.FileName;
                 // сохраняем файл в папку Files в каталоге wwwroot
@@ -110,10 +151,11 @@ namespace DepartmentModule.Controllers
                 {
                     uploadedFile.CopyTo(fileStream);
                 }
-                return new Book { Name = uploadedFile.FileName, Url = path };
+                return new Book { Name = name, Url = path };
             }
             return null;
         }
+
         // GET: Books/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

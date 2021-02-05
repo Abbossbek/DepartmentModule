@@ -79,22 +79,6 @@ namespace DepartmentModule.Controllers
             }
             return View(subject);
         }
-
-        public Book Upload(IFormFile uploadedFile)
-        {
-            if (uploadedFile != null)
-            {
-                // путь к папке Files
-                string path = "/Files/" + uploadedFile.FileName;
-                // сохраняем файл в папку Files в каталоге wwwroot
-                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
-                {
-                    uploadedFile.CopyTo(fileStream);
-                }
-                return new Book { Name = uploadedFile.FileName, Url = path };
-            }
-            return null;
-        }
         // GET: Subjects/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
