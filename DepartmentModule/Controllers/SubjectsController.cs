@@ -10,9 +10,11 @@ using DepartmentModule.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DepartmentModule.Controllers
 {
+    [Authorize]
 
     public class SubjectsController : Controller
     {
@@ -20,6 +22,7 @@ namespace DepartmentModule.Controllers
         IWebHostEnvironment _appEnvironment;
 
         public static Subject Current { get; private set; }
+        
 
         public SubjectsController(DepartmentModuleContext context, IWebHostEnvironment appEnvironment)
         {
@@ -54,7 +57,11 @@ namespace DepartmentModule.Controllers
         // GET: Subjects/Create
         public IActionResult Create()
         {
-            return View();
+            Current = new Subject();
+            Current.AdditionalLiteratures = new List<Book>();
+            Current.Literatures = new List<Book>();
+
+            return View(Current);
         }
 
         // POST: Subjects/Create
@@ -62,11 +69,10 @@ namespace DepartmentModule.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Subject subject, [Bind("programFile")]IFormFile programFile)
+        public async Task<IActionResult> Create([Bind("Id,Name")] Subject subject)
         {
             if (ModelState.IsValid)
             {
-                subject.Program = Upload(programFile);
                 _context.Add(subject);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
