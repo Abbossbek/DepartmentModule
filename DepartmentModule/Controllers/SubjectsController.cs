@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace DepartmentModule.Controllers
 {
@@ -22,7 +23,8 @@ namespace DepartmentModule.Controllers
         IWebHostEnvironment _appEnvironment;
 
         public static Subject Current { get; private set; }
-        
+        public static bool AddingNew { get; private set; }
+
 
         public SubjectsController(DepartmentModuleContext context, IWebHostEnvironment appEnvironment)
         {
@@ -33,7 +35,14 @@ namespace DepartmentModule.Controllers
         // GET: Subjects
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Subject.Include("Program").Include("AdditionalLiteratures").Include("Themes").Include("Literatures").ToListAsync());
+            return View(await _context.Subject
+                .Include("Program")
+                .Include("AdditionalLiteratures")
+                .Include("Themes")
+                .Include("Literatures")
+                .Include("User")
+                .Where(x => x.User.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value)
+                .ToListAsync());
         }
 
         // GET: Subjects/Details/5
@@ -57,6 +66,7 @@ namespace DepartmentModule.Controllers
         // GET: Subjects/Create
         public IActionResult Create()
         {
+            AddingNew = true;
             Current = new Subject();
             Current.AdditionalLiteratures = new List<Book>();
             Current.Literatures = new List<Book>();
@@ -73,16 +83,26 @@ namespace DepartmentModule.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(subject);
+                Current.Name = subject.Name;
+                Current.User = _context.Users.Find(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                _context.Add(Current);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(subject);
+            return View("Index", 
+                await _context.Subject
+                .Include("Program")
+                .Include("AdditionalLiteratures")
+                .Include("Themes")
+                .Include("Literatures")
+                .Include("User")
+                .Where(x => x.User.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value)
+                .ToListAsync());
         }
         // GET: Subjects/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            
+            AddingNew = false;
             if (id == null)
             {
                 return NotFound();
@@ -91,7 +111,10 @@ namespace DepartmentModule.Controllers
                 .Include("Program")
                 .Include("AdditionalLiteratures")
                 .Include("Themes")
-                .Include("Literatures").ToList().Find(x=>x.Id==id);
+                .Include("Literatures")
+                .Include("User")
+                .Where(x => x.User.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value)
+                .ToList().Find(x=>x.Id==id);
             if (subject == null)
             {
                 return NotFound();
@@ -194,8 +217,10 @@ namespace DepartmentModule.Controllers
                 default:
                     break;
             }
-            
-            return View("Edit", Current);
+            if (AddingNew)
+                return View("Create", Current);
+            else
+                return View("Edit", Current);
         }
         public async Task<IActionResult> RemoveLiterature(int? id)
         {
@@ -215,12 +240,5 @@ namespace DepartmentModule.Controllers
             Current.AdditionalLiteratures.Remove(Current.AdditionalLiteratures.First(x => x.Id == id));
             return RedirectToAction(nameof(Index));
         }
-        public async Task<IActionResult> AddProgram()
-        { 
-            View("Edit", Current);
-
-            return View("Index");
-        }
-
     }
 }

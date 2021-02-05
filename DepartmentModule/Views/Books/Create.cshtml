@@ -61,7 +61,7 @@
                 </div>
                 <div class="input-group">
 
-                    <input type="text" class="form-control" name="quary" placeholder=".ppt pdf doc docx Search for Google...">
+                    <input type="text" class="form-control" name="query" placeholder=".ppt pdf doc docx Search for Google...">
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-search">
@@ -83,26 +83,20 @@
             Name
         </th>
         <th>
-            Url
-        </th>
-        <th>
 
         </th>
     </tr>
     <tbody>
         @foreach (var item in ViewBag.fun)
         {
-
-            <tr class="table-light">
+            
+            <tr class="table-light" >
                 <td>
                     @item.Name
                 </td>
-                <td>
-                    @item.Url
-                </td>
                 <td width="60px">
-                    <a asp-controller="Books" asp-action="Save" asp-route-id="@item.Id" class="btn btn-primary">
-                        +
+                    <a asp-controller="Books" asp-action="Save" class="btn btn-primary">
+                        @Html.ActionLink("Save", "Save", new { Id = item.Id, Name = item.Name, Url = item.Url})
                     </a>
                 </td>
             </tr>

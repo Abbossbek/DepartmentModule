@@ -15,6 +15,7 @@ using System.Text;
 using System.Net;
 using HtmlAgilityPack;
 using System.Web;
+using System.Security.Claims;
 
 namespace DepartmentModule.Controllers
 {
@@ -23,6 +24,7 @@ namespace DepartmentModule.Controllers
     {
         private readonly DepartmentModuleContext _context;
         IWebHostEnvironment _appEnvironment;
+        List<Book> books;
 
         public static BookType BookType { get; private set; }
 
@@ -35,7 +37,8 @@ namespace DepartmentModule.Controllers
         // GET: Books
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Book.ToListAsync());
+            return View(await _context.Book.Include("User")
+                .Where(x=>x.User.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value).ToListAsync());
         }
 
         // GET: Books/Details/5
@@ -56,13 +59,23 @@ namespace DepartmentModule.Controllers
             return View(book);
         }
 
-        public async Task<IActionResult> Save(int? Id)
+        public async Task<IActionResult> Save([Bind("Id, Name, Url")]Book book)
         {
-            return View();
+            //Book book = books.First(x=>x.Id == id);
+                book.User = _context.Users.Find(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                _context.Add(book);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            
+            return View(book);
         }
         public async Task<IActionResult> GoogleSearch([Bind("query")]string query, [Bind("type")]string type)
         {
-            List<Book> books = new List<Book>();
+            if(books == null)
+            {
+                books = new List<Book>();
+            }
+            books.Clear();
             StringBuilder sb = new StringBuilder();
             byte[] ResultsBuffer = new byte[8192];
             string SearchResults = "http://google.com/search?q=" + query.Trim() + " filetype:"+type;
@@ -96,13 +109,14 @@ namespace DepartmentModule.Controllers
                 string hrefValue = link.GetAttributeValue("href", string.Empty);
                 if (hrefValue.ToString().Contains("/url?q=")
                     && (hrefValue.ToString().ToUpper().Contains("HTTP://") || hrefValue.ToString().ToUpper().Contains("HTTPS://"))
-                    && hrefValue.ToString().ToUpper().Contains(".PDF"))
+                    && hrefValue.ToString().ToUpper().Contains("."+type))
                 {
                     int index = hrefValue.IndexOf("&");
                     if (index > 0)
                     {
                         hrefValue = hrefValue.Substring(0, index);
-                        books.Add(new Book() { Name = HttpUtility.HtmlDecode(link.InnerText).Remove(HttpUtility.HtmlDecode(link.InnerText).IndexOf('>')),
+                        var name = HttpUtility.HtmlDecode(link.InnerText);
+                        books.Add(new Book() { Name = name.Remove(name.IndexOf('›')),
                             Url = hrefValue.Replace("/url?q=", "") });
                     }
                 }
@@ -126,10 +140,8 @@ namespace DepartmentModule.Controllers
         {
             if (ModelState.IsValid)
             {
-                Book _book = new Book();
-                _book = book;
-                book = Upload(bookUrl);
-                book.Name = _book.Name;
+                book = Upload(bookUrl, book.Name);
+                book.User = _context.Users.Find(User.FindFirst(ClaimTypes.NameIdentifier).Value);
                 _context.Add(book);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -244,24 +256,30 @@ namespace DepartmentModule.Controllers
         public async  Task<IActionResult> AddLiterature()
         {
             BookType = BookType.Literature;
-            return View("Index", await _context.Book.Where(x =>
-            !SubjectsController.Current.Literatures.Contains(x)).ToListAsync());
+            return View("Index", await _context.Book.Include("User")
+                .Where(x => x.User.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value 
+                && !SubjectsController.Current.Literatures.Contains(x)).ToListAsync());
         }
         public async Task<IActionResult> AddAdditionallLiterature()
         {
             BookType = BookType.AdditionalLiterature;
-            return View("Index", await _context.Book.Where(x=>
-            !SubjectsController.Current.AdditionalLiteratures.Contains(x)).ToListAsync());
+            return View("Index", await _context.Book.Include("User")
+                .Where(x => x.User.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value
+                && !SubjectsController.Current.AdditionalLiteratures.Contains(x)).ToListAsync());
         }
         public async Task<IActionResult> AddProgram()
         {
             BookType = BookType.Program;
-            return View("Index", await _context.Book.ToListAsync());
+            return View("Index", await _context.Book.Include("User")
+                .Where(x => x.User.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value)
+                .ToListAsync());
         }
         public async Task<IActionResult> AddThemes()
         {
             BookType = BookType.Themes;
-            return View("Index", await _context.Book.ToListAsync());
+            return View("Index", await _context.Book.Include("User")
+                .Where(x => x.User.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value)
+                .ToListAsync());
         }
     }
 }
