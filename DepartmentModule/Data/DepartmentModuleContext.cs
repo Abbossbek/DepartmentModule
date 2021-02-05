@@ -8,7 +8,7 @@ namespace DepartmentModule.Data
         public DepartmentModuleContext (DbContextOptions<DepartmentModuleContext> options)
             : base(options)
         {
-          //  Database.EnsureCreated();
+            Database.EnsureCreated();
         }
 
 
