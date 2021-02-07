@@ -50,8 +50,6 @@ namespace DepartmentModule
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseRouting();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -61,9 +59,9 @@ namespace DepartmentModule
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+            app.UseRouting();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
 
             app.UseAuthentication();
             app.UseAuthorization();
