@@ -22,31 +22,26 @@
                     </ul>
                 </nav>
             </div>
-         </div>
-</header>
-   
-    <div class="card-body">
-        <div class="container bg-white">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
         </div>
+    </header>
+    <div class="container bg-white">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
     </div>
-
-
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2021 - DepartmentModule - <a asp-area="" asp-controller="Subjects" asp-action="Index">Info</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    
+
     <script>
         $(document).ready(function (e) {
-            $('.search-panel .dropdown-menu').find('a').click(function (e)
-            {
+            $('.search-panel .dropdown-menu').find('a').click(function (e) {
                 e.preventDefault();
                 var param = $(this).attr("href").replace("#", "");
                 var concept = $(this).text();
