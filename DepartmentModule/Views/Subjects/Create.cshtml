@@ -15,33 +15,33 @@
     </div>
     <label asp-for="Program" class="control-label"></label>
     <div class="form-group card">
-        <table cellpadding="10" class="table-active">
-            <tr>
-                <td>
+        <table cellpadding="10" >
+            <tr class="bg-white">
+                <td >
                     <label asp-for="Program.Name" class="control-label"></label>
                 </td>
-                <td>
+                <td >
                     <input readonly="readonly" asp-for="Program.Name" class="form-control" />
 
                 </td>
                 <td>
-                    <a asp-controller="Books" asp-action="AddProgram" class="btn btn-primary">Select</a>
+                    <a asp-controller="Books" asp-action="AddProgram" class="btn btn-info">Select</a>
                  </td>
             </tr>
         </table>
     </div>
     <label asp-for="Themes" class="control-label"></label>
     <div class="form-group card">
-        <table cellpadding="10" class="table-active">
-            <tr>
-                <td>
+        <table cellpadding="10" >
+            <tr class="bg-white">
+                <td >
                     <label asp-for="Themes.Name" class="control-label"></label>
                 </td>
                 <td>
                     <input readonly="readonly" asp-for="Themes.Name" class="form-control" />
                 </td>
                 <td>
-                    <a asp-controller="Books" asp-action="AddThemes" class="btn btn-primary">Select</a>
+                    <a asp-controller="Books" asp-action="AddThemes" class="btn btn-info">Select</a>
                 </td>
             </tr>
 
@@ -52,7 +52,7 @@
         <table class="table table-hover table-bordered">
             <thead>
                 <tr class="table-active">
-                    <td>
+                    <td >
                         Name
                     </td>
                     <td>
