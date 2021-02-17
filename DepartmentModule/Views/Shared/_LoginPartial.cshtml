@@ -7,12 +7,12 @@
 
  @if (SignInManager.IsSignedIn(User))
       {
-        <li role="presentation" class="navbar-link" >
+        <li role="presentation" class="navbar-link text-body" >
         <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
-            <span class="name"><i class="fa fa-user icon"></i> @User.Identity.Name </span>
+            <span class="name text-body"><i class="fa fa-user icon"></i> @User.Identity.Name </span>
         </a>
     </li>
-    <li role="presentation" class="navbar-link" >
+    <li role="presentation" class="navbar-link text-body" >
         <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout">
             <i class="fa fa-power-off icon"></i> Logout
         </a>
@@ -21,10 +21,10 @@
 else
 {
     <li role="presentation" class="navbar-link">
-        <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        <a class="nav-link text-body" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
     </li>
     <li role="presentation" class="navbar-link" >
-        <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        <a class="nav-link text-body" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
     </li>
 }
 
