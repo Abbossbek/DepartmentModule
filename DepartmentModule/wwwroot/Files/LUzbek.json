@@ -1,0 +1,352 @@
+[
+  {
+    "Id": 1,
+    "ContentTask": "A A A A a a a A A A A A a A A A a a A a a a a a a a a a a a a a a a a a a a",
+    "Error": 9
+  },
+  {
+    "Id": 2,
+    "ContentTask": "b b b b b b b b b b b b b b b b b b b",
+    "Error": 8
+  },
+  {
+    "Id": 3,
+    "ContentTask": "c c c c c c c c c c c c c c c c c c c",
+    "Error": 7
+  },
+  {
+    "Id": 4,
+    "ContentTask": "a a a a a a a a a a a a a a c c c c c c c c c c c c c c",
+    "Error": 7
+  },
+  {
+    "Id": 5,
+    "ContentTask": "as as as as as as as as as as as as as as as as as as",
+    "Error": 6
+  },
+  {
+    "Id": 6,
+    "ContentTask": "df df df df df df df df df df df df df df df df df df",
+    "Error": 6
+  }, 
+  {
+    "Id": 7,
+    "ContentTask": "df df df df df df df df as as as as as as as as as as",
+    "Error": 5
+  },
+  {
+    "Id": 8,
+    "ContentTask": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaooooooooooooooooooooooooooooooooooooooooo",
+    "Error": 6
+  },
+ {
+    "Id": 9,
+    "ContentTask": "ssssssssssssssssssssssssdddddddddddddddddddddddddfffffffffffffffffffffffffffffff",
+    "Error": 6
+  },
+  {
+    "Id": 10,
+    "ContentTask": "ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha",
+    "Error": 6
+  },
+  {
+    "Id": 11,
+    "ContentTask": "yo'q yo'q yo'q yo'q yo'q yo'q yo'q yo'q yo'q yo'q yo'q yo'q yo'q yo'q yo'q yo'q yo'q yo'q",
+    "Error": 8
+  },
+  {
+    "Id": 12,
+    "ContentTask": "one one one one one one one one one one one one one one one one one one one one one",
+    "Error": 6
+  },
+  {
+    "Id": 13,
+    "ContentTask": "apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple",
+    "Error": 6
+  },
+  {
+    "Id": 14,
+    "ContentTask": "one apple one apple one apple one apple one apple one apple one apple one apple one apple",
+    "Error": 6
+  },
+  {
+    "Id": 15,
+    "ContentTask": "lion lion lion lion lion lion lion lion lion lion lion lion lion lion lion lion lion lion lion lion",
+    "Error": 6
+  },
+   {
+    "Id": 16,
+    "ContentTask": "tiger tiger tiger tiger tiger tiger tiger tiger tiger tiger tiger tiger tiger tiger tiger tiger tiger",
+    "Error": 6
+  },
+  { 
+    "Id": 17,
+    "ContentTask": "weather weather weather weather weather weather weather weather weather weather weather weather weather",
+    "Error": 6
+  },
+  {
+    "Id": 18,
+    "ContentTask": "father father father father father father father father father father father father father father father father",
+    "Error": 5
+  },
+  {
+    "Id": 19,
+    "ContentTask": "yes no yes no yes no yes no yes no yes no yes no yes no yes no yes no yes no yes no yes no yes no yes no yes no yes no",
+    "Error": 5
+  },
+  {
+    "Id": 20,
+    "ContentTask": "Country Country Country Country Country Country Country Country Country Country Country Country Country Country Country Country",
+    "Error": 7
+  },
+  {
+    "Id": 21,
+    "ContentTask": "Wallpaper Wallpaper Wallpaper Wallpaper Wallpaper Wallpaper Wallpaper Wallpaper Wallpaper Wallpaper Wallpaper Wallpaper Wallpaper Wallpaper",
+    "Error": 5
+  },
+  {
+    "Id": 22,
+    "ContentTask": "i am a good person i am a good person i am a good person i am a good person i am a good person i am a good person i am a good person i am a good person",
+    "Error": 6
+  },
+  {
+    "Id": 23,
+    "ContentTask": "you are a good person you are a good person you are a good person you are a good person you are a good person you are a good person you are a good person",
+    "Error": 7
+  },
+  {
+    "Id": 24,
+    "ContentTask": "we are creative we are creative we are creative we are creative we are creative we are creative we are creative we are creative we are creative",
+    "Error": 6
+  },
+  {
+    "Id": 25,
+    "ContentTask": "I have a lot of friends I have a lot of friends I have a lot of friends I have a lot of friends I have a lot of friends I have a lot of friends I have a lot of friends",
+    "Error": 7
+  },
+  {
+    "Id": 26,
+    "ContentTask": "I'm the best I'm the best I'm the best I'm the best I'm the best I'm the best I'm the best I'm the best I'm the best I'm the best I'm the best I'm the best I'm the best",
+    "Error": 6
+  },
+  {
+    "Id": 27,
+    "ContentTask": "I can do it, I can do it, I can do it, I can do it, I can do it, I can do it, I can do it, I can do it, I can do it, I can do it, I can do it, I can do it, I can do it, I can do it",
+    "Error": 8
+  },
+  {
+    "Id": 28,
+    "ContentTask": "Who am I? Who am I? Who am I? Who am I? Who am I? Who am I? Who am I? Who am I? Who am I? Who am I? Who am I? Who am I? Who am I? Who am I? Who am I? Who am I? Who am I? Who am I? ",
+    "Error": 9
+  },
+  {
+    "Id": 29,
+    "ContentTask": "What is this? What is this? What is this? What is this? What is this? What is this? What is this? What is this? What is this? What is this? What is this? What is this? What is this?",
+    "Error": 7
+  },
+  {
+    "Id": 30,
+    "ContentTask": "Chess has more combinations than atoms in the universe",
+    "Error": 3
+  },
+  {
+    "Id": 31,
+    "ContentTask": "Well-known actor Charlie Chaplin took third place in the competition among his characters",
+    "Error": 3
+  },
+  {
+    "Id": 32,
+    "ContentTask": "The longest river in the world is the Nile. The longest river in the world is the Nile. The longest river in the world is the Nile. The longest river in the world is the Nile. The longest river in the world is the Nile",
+    "Error": 10
+  },
+  {
+    "Id": 33,
+    "ContentTask": "The longest river in the world is the Nile, its length is 6650 km. The longest river in the world is the Nile, its length is 6650 km. The longest river in the world is the Nile, its length is 6650 km.",
+    "Error": 9
+  },
+  {
+    "Id": 34,
+    "ContentTask": "Mount Everest is the highest of the Himalayan mountains, and—at 8850 meters—is considered the highest point on Earth. Mount Everest is the highest of the Himalayan mountains, and—at 8850 meters—is considered the highest point on Earth.",
+    "Error": 11
+  },
+  {
+    "Id": 35,
+    "ContentTask": "There are 4 oceans in the world. they are the Arctic Ocean, the Atlantic Ocean, the Indian Ocean, and the Pacific Ocean. There are 4 oceans in the world. they are the Arctic Ocean, the Atlantic Ocean, the Indian Ocean, and the Pacific Ocean",
+    "Error": 10
+  },
+  {
+    "Id": 36,
+    "ContentTask": "The largest and deepest ocean in the world is the Pacific Ocean. Its surface area is 179.7 million km2. The deepest part is the Mariana Trench, its depth is 11,034 m.",
+    "Error": 8
+  },
+  {
+    "Id": 37,
+    "ContentTask": "Mauna Loa is the biggest volcano on Earth. It is 9,170 meters tall. It is a shield volcano. Mauna Loa shares is a hot spot in the Pacific plate.",
+    "Error": 4
+  },
+  {
+    "Id": 38,
+    "ContentTask": "There are eight planets in the Solar System. From closest to farthest from the Sun, they are: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune. The first four planets are called terrestrial planets. They are mostly made of rock and metal, and they are mostly solid. The last four planets are called gas giants. This is because they are much larger than other planets and are mostly made of gas.",
+    "Error": 14
+  },
+  {
+    "Id": 39,
+    "ContentTask": "The sun lies at the heart of the solar system, where it is by far the largest object. It holds 99.8 percent of the solar system's mass and is roughly 109 times the diameter of the Earth — about one million Earths could fit inside the sun. ",
+    "Error": 8
+  },
+  {
+    "Id": 40,
+    "ContentTask": "At over 828 meters and more than 160 stories, Burj Khalifa holds the following records: Tallest building in the world. Tallest free-standing structure in the world. Highest number of stories in the world. Highest occupied floor in the world. Highest outdoor observation deck in the world. Elevator with the longest travel distance in the world. Tallest service elevator in the world, and so on.",
+    "Error": 10
+  },
+  {
+    "Id": 41,
+    "ContentTask": "Goliath Beetle Hiding in the undergrowth of African tropical forests, Goliath Beetles take the top spot as the heaviest insect in the world! They weigh up to 3.5 ounces (100 g), grow to a length of 4.5 inches (11.5 cm) and are brown/black/white in colour.",
+    "Error": 6
+  },
+  {
+    "Id": 42,
+    "ContentTask": "The Ostrich is the largest living bird, with a height of 2.7 m and weight of 156 kg and at 5 cm in size, their eyes are the largest of all birds. They don’t have teeth and can survive without water for days as they can make their own water internally and extract the rest from the vegetation they eat!",
+    "Error": 10
+  },
+  {
+    "Id": 43,
+    "ContentTask": "The largest living reptile is the Saltwater Crocodile, growing to an average length of 15.2 m, although they can reach 6.3m in length and weigh up to 453 kg. They are distributed widely in brackish and salt waters in parts of India, Asia and Australia and feed on all animals they can get their teeth in to, which includes sharks if they get the chance.",
+    "Error": 9
+  },
+  {
+    "Id": 44,
+    "ContentTask": "Heading underwater, the largest living fish is the 12 m long Whale Shark. Weighing up to 22 tonnes, they are an impressive sight, but despite their size, they feed mostly on tiny plankton. Present in tropical seas around the world, whale sharks are considered vulnerable and are hunted in some areas.",
+    "Error": 8
+  },
+  {
+    "Id": 45,
+    "ContentTask": "The position of largest living land carnivore is shared between Brown Bears and Polar Bears. Weighing a whopping 907 kg (1 ton) and reaching up to 3 m tall when standing on their hind legs, they’ve definitely earned their spot as the biggest. While you’ll find Brown Bears in the forests and mountains of North America, Europe and Asia, you need to head further north to the Arctic Circle to catch a glimpse of Polar Bears, who split their time between the sea and ice and feed mostly on seals.",
+    "Error": 13
+  },
+  {
+    "Id": 46,
+    "ContentTask": "The largest living land animal is the African Elephant which can weigh up to 7 tons, they typically grow to 10.6 m from trunk to tail and have a shoulder height of 4.2 m. There are at least two species, the savanna elephant and the forest elephant, and they currently cited as venerable in the IUCN Red List of Threatened Species.",
+    "Error": 8
+  },
+  {
+    "Id": 47,
+    "ContentTask": "The Blue whale is the largest animal of all time, reaching a weight of about 180 tonnes and a length of 30 m. Their tongues alone can weigh as much as an elephant and their hearts as much as a car, yet they survive by eating a diet rich in tiny plankton.",
+    "Error": 5
+  },
+  {
+    "Id": 48,
+    "ContentTask": "The size of the colossal squid is often exaggerated, with viral posts on the internet saying they can reach 18 m or even 27 m in length! However, the largest squid documented was 14 m long. They have the largest eyes in the animal kingdom, reaching 25 cm in diameter!",
+    "Error": 9
+  },
+  {
+    "Id": 49,
+    "ContentTask": "LIONS ARE THE ONLY CATS WHO ROAR TOGETHER Lions are the only known cat species where individuals roar together - with even young cubs joining in with their mews. The calling sequence usually lasts about 40 seconds.  Prides often roar together to mark their territory - a roar can be heard from 5 miles away. ",
+    "Error": 8
+  },
+  {
+    "Id": 50,
+    "ContentTask": "Cats have fewer toes on their back paws, Like most four-legged mammals, they have five toes on the front, but their back paws only have four toes. Scientists think the four-toe back paws might help them run faster.",
+    "Error": 2
+  },
+  {
+    "Id": 51,
+    "ContentTask": "Koalas might not seem to have a lot in common with us, but if you were to take a closer look at their hands, you'd see that they have fingerprints that are just like humans'. In fact, they're so similar when it comes to the distinctive loops and arches, that in Australia, 'police feared that criminal investigations may have been hampered by koala prints,'' according to Ripley's Believe It or Not.",
+    "Error": 3
+  },
+  {
+    "Id": 52,
+    "ContentTask": "Female lions do 90 percent of the hunting. Lion hunting. While male lions attract their fair share of attention thanks to their impressive manes, it's the female lions who do the bulk of the work when it comes to feeding their families. 'Lionesses, not male lions, do the majority of hunting for their pride,' according to CBS News. 'Lionesses hunt around 90 percent of the time, while the males protect their pride.'",
+    "Error": 5
+  },
+  {
+    "Id": 53,
+    "ContentTask": "Primitive crocodiles could gallop. If you think crocodiles aren't frightening enough, consider this: They used to gallop. While modern-day crocodiles can move surprisingly fast, giant crocodiles during the Cretaceous period could use their legs to chase and kill dinosaurs.",
+    "Error": 4
+  },
+  {
+    "Id": 54,
+    "ContentTask": "Orcas can learn to speak dolphin. Groups of killer whales have their own dialects that are further influenced by the company they keep. A 2014 study published in The Journal of the Acoustical Society of America revealed that orcas housed with bottlenose dolphins over a long period of time were able to replicate the dolphins' language.",
+    "Error": 4
+  },
+  {
+    "Id": 55,
+    "ContentTask": "Giraffes with darker spots are more dominant.You can learn a lot from the color of a giraffe's spots. According to a 2019 study in Animal Behaviour, giraffes with darker spots are more dominant than giraffes with lighter spots. And not only that: Dark-spotted giraffes also tend to be more solitary.",
+    "Error": 1
+  },
+  {
+    "Id": 56,
+    "ContentTask": "Vampire bat saliva keeps blood from clotting.Vampire bats do more than just bite their prey—they also keep the other animal's blood from clotting. Their saliva works as an anticoagulant, so that the blood can flow freely as they feed. Here's another fun fact: The protein in the anticoagulant has been nicknamed 'Draculin' Spooky!",
+    "Error": 4
+  },
+  {
+    "Id": 57,
+    "ContentTask": "Butterflies taste with their feet.Not only do butterflies taste using their feet—the receptors on their legs are also 200 times stronger than human taste buds. When a butterfly lands on a plant, they use these sensors to determine whether or not what they're standing on is edible.",
+    "Error": 1
+  },
+  {
+    "Id": 58,
+    "ContentTask": "Cows produce more milk when listening to slow music.Call it a moo-d. Researchers at the University of Leicester School of Psychology found that cows produced 1.54 more pints per day—a 3 percent increase—when they were played slow music, as opposed to more upbeat tunes.",
+    "Error": 2
+  },
+  {
+    "Id": 59,
+    "ContentTask": "Ravens are masters of deception.Just how smart are ravens? A 2002 study published in Animal Behaviour found that these tricky birds have the ability to deceive each other. The entire corvid family—which includes crows, ravens, and jays—is exceptionally intelligent. These birds have also been known to play pranks on one another, and to tease other animals.",
+    "Error": 3
+  },
+  {
+    "Id": 60,
+    "ContentTask": "Squirrels will adopt orphans. Turns out, squirrels have an intense motherly instinct. One 2010 study by researchers at the University of Guelph found that the animals will take in the orphaned pups of their late family members. 'Social animals, including lions and chimpanzees, are often surrounded by relatives, so it's not surprising that a female would adopt an orphaned family member because they have already spent a lot of time together,'. 'But red squirrels live in complete isolation and are very territorial. The only time they will allow another squirrel on their territory is the one day a year when the females are ready to mate or when they are nursing their pups.'",
+    "Error": 8
+  },
+  {
+    "Id": 61,
+    "ContentTask": "Snow leopards don't roar. Snow leopards have less-developed vocal cords than their fellow large cats, meaning that they can't roar, but make a purr-like sound called a chuff instead. For a 2010 study published in the Biological Journal of the Linnean Society, scientists researched why some cats have a higher-pitched meow than others. They found that it's not size that determines a kitty's call, but habitat.",
+    "Error": 3
+  },
+  {
+    "Id": 62,
+    "ContentTask": "Painted turtles survive winter by breathing through their butts. Not all creatures head to warmer climates when it gets cold out, and that means they need to learn to survive in chilly conditions. Painted turtles need to adapt to frozen ponds, which restrict their access to the air above the water. They do that by breathing through their butts—specifically, the all-purpose orifice called the cloaca. Thanks to a process called cloacal respiration, the turtles are able to get oxygen directly from the water around them.",
+    "Error": 5
+  },
+  {
+    "Id": 63,
+    "ContentTask": "Sloths can take up to a month to completely digest a single leaf. Everything about life is slow for these sleepy mammals. Most sloths will only have a bowel movement once a week, and it can take them up to 30 days to completely digest a single leaf. For comparison, it takes the average human 12 to 48 hours to ingest, digest, and eliminate waste from food.",
+    "Error": 1
+  },
+  {
+    "Id": 64,
+    "ContentTask": "Reindeer eyes turn blue in the winter. Reindeers have beautiful baby blues—but only in the winter! According to the Biotechnology and Biological Sciences Research Council, 'the eyes of Arctic reindeer change color through the seasons from gold to blue, adapting to extreme changes of light levels in their environment.' The change in color impacts how light is reflected through the animals' retina, and improves their vision.",
+    "Error": 4
+  },
+  {
+    "Id": 65,
+    "ContentTask": "Zebra stripes act as a natural bug repellant. Cows may benefit from artificial stripes, but zebras have the real deal. One 2012 report published in the Journal of Experimental Biology suggests that zebras' black and white stripes may be an evolutionary feature to fend off harmful horsefly bites. 'A zebra-striped horse model attracts far fewer horseflies than either homogeneous black, brown, grey or white equivalents,' the researchers wrote.",
+    "Error": 1
+  },
+  {
+    "Id": 66,
+    "ContentTask": "Pigeons can do math. You might think of pigeons as… not that smart. But it turns out, they're actually quite intelligent. In fact, one 2011 study published in the journal Science found that the birds are capable of doing math at the same level as monkeys. During the study, the pigeons were asked to compare nine images, each containing a different number of objects. The researchers found that the birds were able to rank the images in order of how many objects they contained. Put simply, they learned that the birds could count!",
+    "Error": 4
+  },
+  {
+    "Id": 67,
+    "ContentTask": "Ducks can surf. Over in New Zealand, surfers have noticed the same thing that those who ride the waves in California have witnessed: ducks can surf. The birds do so in order to catch food or simply to move through the water quickly. Sports reporter Francis Malley spotted a female duck and her babies catching a wave and told the New Zealand Herald, 'The mother was surfing on her belly on the whitewash. I've never surfed with ducks before so this was a first.'",
+    "Error": 1
+  },
+  {
+    "Id": 68,
+    "ContentTask": "A housefly buzzes in an F key. When you hear a housefly buzzing around your home, you might be annoyed by the persistent sound. However, the next time it happens, try to soothe yourself by noting that the airborne pest is actually buzzing in an F key. How melodious!",
+    "Error": 1
+  },
+  {
+    "Id": 69,
+    "ContentTask": "Humpback whales use bubbles to hunt. You might think that a whale's massive size is the only edge they'd need when it comes to hunting in the open waters. But humpback whales actually team up to use a 'bubble-net' technique in order to catch their prey. 'Sometimes, the whales will swim in an upward spiral and blow bubbles underwater, creating a circular 'net' of bubbles that makes it harder for fish to escape,' Science News reports.",
+    "Error": 1
+  },
+  {
+    "Id": 70,
+    "ContentTask": "A grizzly bear's bite is strong enough to crush a bowling ball. Those who find themselves in the presence of a grizzly bear will surely want to stay out of reach of this animal's super sharp claws. But they'll certainly also want to keep out of the grizzly's mouth, because these creatures 'have a bite-force of over 8,000,000 pascals,' according to National Geographic. That means grizzly bears can literally crush a bowling ball between their jaws. Yikes!",
+    "Error": 1
+  }
+  ]
