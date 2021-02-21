@@ -37,8 +37,8 @@ namespace DepartmentModule.Controllers
         // GET: Books
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Book.Include("User")
-                .Where(x=>x.User.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value).ToListAsync());
+            return View(await _context.Book
+                .Where(x=>x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value).ToListAsync());
         }
 
         // GET: Books/Details/5
@@ -50,7 +50,7 @@ namespace DepartmentModule.Controllers
             }
 
             var book = await _context.Book
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.BookID == id);
             if (book == null)
             {
                 return NotFound();
@@ -62,7 +62,7 @@ namespace DepartmentModule.Controllers
         public async Task<IActionResult> Save([Bind("Id, Name, Url")]Book book)
         {
             //Book book = books.First(x=>x.Id == id);
-                book.User = _context.Users.Find(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                book.UserID = User.FindFirst(ClaimTypes.NameIdentifier).Value;
                 _context.Add(book);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -138,7 +138,7 @@ namespace DepartmentModule.Controllers
             if (ModelState.IsValid)
             {
                 book = Upload(bookUrl, book.Name);
-                book.User = _context.Users.Find(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                book.UserID = User.FindFirst(ClaimTypes.NameIdentifier).Value;
                 _context.Add(book);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -185,7 +185,7 @@ namespace DepartmentModule.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Url")] Book book)
         {
-            if (id != book.Id)
+            if (id != book.BookID)
             {
                 return NotFound();
             }
@@ -199,7 +199,7 @@ namespace DepartmentModule.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BookExists(book.Id))
+                    if (!BookExists(book.BookID))
                     {
                         return NotFound();
                     }
@@ -222,7 +222,7 @@ namespace DepartmentModule.Controllers
             }
 
             var book = await _context.Book
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.BookID == id);
             if (book == null)
             {
                 return NotFound();
@@ -244,35 +244,35 @@ namespace DepartmentModule.Controllers
 
         private bool BookExists(int id)
         {
-            return _context.Book.Any(e => e.Id == id);
+            return _context.Book.Any(e => e.BookID == id);
         }
         
         public async  Task<IActionResult> AddLiterature()
         {
             BookType = BookType.Literature;
-            return View("Index", await _context.Book.Include("User")
-                .Where(x => x.User.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value 
-                && !SubjectsController.Current.Literatures.Contains(x)).ToListAsync());
+            var books = await _context.Book.Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value).ToListAsync();
+            books = books.Where(b => SubjectsController.Current.Literatures.FirstOrDefault(l => l.BookId == b.BookID) == null).ToList();
+            return View("Index", books);
         }
         public async Task<IActionResult> AddAdditionallLiterature()
         {
             BookType = BookType.AdditionalLiterature;
-            return View("Index", await _context.Book.Include("User")
-                .Where(x => x.User.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value
-                && !SubjectsController.Current.AdditionalLiteratures.Contains(x)).ToListAsync());
+            return View("Index", _context.Book.ToList()
+                .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value
+                && SubjectsController.Current.Literatures.First(z=>z.Book.BookID != x.BookID)!=null).ToList());
         }
         public async Task<IActionResult> AddProgram()
         {
             BookType = BookType.Program;
-            return View("Index", await _context.Book.Include("User")
-                .Where(x => x.User.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value)
+            return View("Index", await _context.Book
+                .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value)
                 .ToListAsync());
         }
         public async Task<IActionResult> AddThemes()
         {
             BookType = BookType.Themes;
-            return View("Index", await _context.Book.Include("User")
-                .Where(x => x.User.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value)
+            return View("Index", await _context.Book
+                .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value)
                 .ToListAsync());
         }
     }

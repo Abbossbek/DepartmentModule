@@ -7,7 +7,7 @@
 <h1>Edit</h1>
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="SubjectID" />
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -70,12 +70,12 @@
                         {
                         <tr>
                             <td>
-                                @item.Name
+                                @item.Book.Name
                             </td>
                             
                             <td>
-                                <a asp-controller="Books" asp-action="Details" class="btn btn-success" asp-route-id="@item.Id">Details</a>
-                                <a asp-controller="Subjects" asp-action="RemoveLiterature" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
+                                <a asp-controller="Books" asp-action="Details" class="btn btn-success" asp-route-id="@item.Book.BookID">Details</a>
+                                <a asp-controller="Subjects" asp-action="RemoveLiterature" class="btn btn-danger" asp-route-id="@item.Book.BookID">Delete</a>
                             </td>
                         </tr>
                         }
@@ -104,12 +104,12 @@
                         {
                         <tr>
                             <td>
-                                @item.Name
+                                @item.Book.Name
                             </td>
 
                             <td>
-                                <a asp-controller="Books" asp-action="Details" class="btn btn-success" asp-route-id="@item.Id">Details</a>
-                                <a asp-controller="Subjects" asp-action="RemoveAdditionalLiterature" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
+                                <a asp-controller="Books" asp-action="Details" class="btn btn-success" asp-route-id="@item.Book.BookID">Details</a>
+                                <a asp-controller="Subjects" asp-action="RemoveAdditionalLiterature" class="btn btn-danger" asp-route-id="@item.Book.BookID">Delete</a>
                             </td>
                         </tr>
                         }

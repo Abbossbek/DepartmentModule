@@ -40,8 +40,7 @@ namespace DepartmentModule.Controllers
                 .Include("AdditionalLiteratures")
                 .Include("Themes")
                 .Include("Literatures")
-                .Include("User")
-                .Where(x => x.User.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value)
+                .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value)
                 .ToListAsync());
         }
 
@@ -54,7 +53,7 @@ namespace DepartmentModule.Controllers
             }
 
             var subject = await _context.Subject
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.SubjectID == id);
             if (subject == null)
             {
                 return NotFound();
@@ -68,8 +67,8 @@ namespace DepartmentModule.Controllers
         {
             AddingNew = true;
             Current = new Subject();
-            Current.AdditionalLiteratures = new List<Book>();
-            Current.Literatures = new List<Book>();
+            Current.AdditionalLiteratures = new List<SubjectBook>();
+            Current.Literatures = new List<SubjectBook>();
 
             return View(Current);
         }
@@ -83,20 +82,20 @@ namespace DepartmentModule.Controllers
         {
             if (ModelState.IsValid)
             {
+                Current.SubjectID = subject.SubjectID;
                 Current.Name = subject.Name;
-                Current.User = _context.Users.Find(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                Current.UserID = User.FindFirst(ClaimTypes.NameIdentifier).Value;
                 _context.Add(Current);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View("Index", 
+            return View("Index",
                 await _context.Subject
                 .Include("Program")
                 .Include("AdditionalLiteratures")
                 .Include("Themes")
                 .Include("Literatures")
-                .Include("User")
-                .Where(x => x.User.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value)
+                .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value)
                 .ToListAsync());
         }
         // GET: Subjects/Edit/5
@@ -112,9 +111,8 @@ namespace DepartmentModule.Controllers
                 .Include("AdditionalLiteratures")
                 .Include("Themes")
                 .Include("Literatures")
-                .Include("User")
-                .Where(x => x.User.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value)
-                .ToList().Find(x=>x.Id==id);
+                .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value)
+                .ToList().Find(x=>x.SubjectID==id);
             if (subject == null)
             {
                 return NotFound();
@@ -130,7 +128,7 @@ namespace DepartmentModule.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Subject subject)
         {
-            if (id != subject.Id)
+            if (id != subject.SubjectID)
             {
                 return NotFound();
             }
@@ -145,7 +143,7 @@ namespace DepartmentModule.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SubjectExists(subject.Id))
+                    if (!SubjectExists(subject.SubjectID))
                     {
                         return NotFound();
                     }
@@ -168,7 +166,7 @@ namespace DepartmentModule.Controllers
             }
 
             var subject = await _context.Subject
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.SubjectID == id);
             if (subject == null)
             {
                 return NotFound();
@@ -190,7 +188,7 @@ namespace DepartmentModule.Controllers
 
         private bool SubjectExists(int id)
         {
-            return _context.Subject.Any(e => e.Id == id);
+            return _context.Subject.Any(e => e.SubjectID == id);
         }
         public async Task<IActionResult> Select(int? id)
         {
@@ -199,20 +197,20 @@ namespace DepartmentModule.Controllers
             {
                 return NotFound();
             }
-            var book = await _context.Book.FindAsync(id);
+            var book = _context.Book.FirstOrDefault(x=>x.BookID == id);
             switch (BooksController.BookType)
             {
                 case BookType.Program:
-                    Current.Program = book;
+                        Current.Program = book;
                     break;
                 case BookType.Themes:
-                    Current.Themes = book;
+                        Current.Themes = book;
                     break;
                 case BookType.Literature:
-                    Current.Literatures.Add(book);
+                    Current.Literatures.Add(new SubjectBook() { Book = book, Subject = Current });
                     break;
                 case BookType.AdditionalLiterature:
-                    Current.AdditionalLiteratures.Add(book);
+                    Current.AdditionalLiteratures.Add(new SubjectBook() { Book = book, Subject = Current });
                     break;
                 default:
                     break;
@@ -228,7 +226,7 @@ namespace DepartmentModule.Controllers
             {
                 return NotFound();
             }
-            Current.Literatures.Remove(Current.Literatures.First(x => x.Id == id));
+            Current.Literatures.Remove(Current.Literatures.First(x => x.BookId == id));
             return RedirectToAction(nameof(Index));
         }
         public async Task<IActionResult> RemoveAdditionalLiterature(int? id)
@@ -237,7 +235,7 @@ namespace DepartmentModule.Controllers
             {
                 return NotFound();
             }
-            Current.AdditionalLiteratures.Remove(Current.AdditionalLiteratures.First(x => x.Id == id));
+            Current.AdditionalLiteratures.Remove(Current.AdditionalLiteratures.First(x => x.BookId == id));
             return RedirectToAction(nameof(Index));
         }
     }

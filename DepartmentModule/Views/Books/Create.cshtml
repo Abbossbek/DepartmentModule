@@ -82,7 +82,7 @@
                 </td>
                 <td width="60px">
                     <a asp-controller="Books" asp-action="Save" >
-                        @Html.ActionLink("Save", "Save", new { Id = item.Id, Name = item.Name, Url = item.Url})
+                        @Html.ActionLink("Save", "Save", new { Id = item.BookID, Name = item.Name, Url = item.Url})
                     </a>
                 </td>
             </tr>

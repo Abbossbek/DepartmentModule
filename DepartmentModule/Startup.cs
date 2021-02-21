@@ -30,8 +30,11 @@ namespace DepartmentModule
 
             services.AddControllersWithViews();
 
-            services.AddDbContext<DepartmentModuleContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("DepartmentModuleContext")));
+            services.AddDbContext<DepartmentModuleContext>(options => {
+                options.UseSqlServer(Configuration.GetConnectionString("DepartmentModuleContext"));
+                options.EnableSensitiveDataLogging();
+            });
+            services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
