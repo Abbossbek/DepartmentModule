@@ -58,7 +58,7 @@
                     @foreach (var literature in item.Literatures)
                         {
                         <div class="badge badge-secondary">
-                            @literature.Book.Name
+                            @literature.Literature.Name
                         </div>
                         }
                     }
@@ -71,7 +71,7 @@
                          @foreach (var literature in item.AdditionalLiteratures)
                     {
                         <div class="badge badge-secondary">
-                            @literature.Book.Name
+                            @literature.AdditionalLiterature?.Name
                         </div>
                     }
                     }

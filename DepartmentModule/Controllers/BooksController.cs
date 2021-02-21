@@ -65,9 +65,11 @@ namespace DepartmentModule.Controllers
                 book.UserID = User.FindFirst(ClaimTypes.NameIdentifier).Value;
                 _context.Add(book);
                 await _context.SaveChangesAsync();
+            if (BookType == BookType.AdditionalLiterature || BookType == BookType.Literature)
+                return RedirectToAction(nameof(Index), GetBooksForList());
+            else
                 return RedirectToAction(nameof(Index));
-            
-            return View(book);
+
         }
         public async Task<IActionResult> GoogleSearch([Bind("query")]string query, [Bind("type")]string type)
         {
@@ -141,7 +143,10 @@ namespace DepartmentModule.Controllers
                 book.UserID = User.FindFirst(ClaimTypes.NameIdentifier).Value;
                 _context.Add(book);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (BookType == BookType.AdditionalLiterature || BookType == BookType.Literature)
+                    return RedirectToAction(nameof(Index), GetBooksForList());
+                else
+                    return RedirectToAction(nameof(Index));
             }
             return View(book);
         }
@@ -208,7 +213,10 @@ namespace DepartmentModule.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                if (BookType == BookType.AdditionalLiterature || BookType == BookType.Literature)
+                    return RedirectToAction(nameof(Index), GetBooksForList());
+                else
+                    return RedirectToAction(nameof(Index));
             }
             return View(book);
         }
@@ -239,7 +247,10 @@ namespace DepartmentModule.Controllers
             var book = await _context.Book.FindAsync(id);
             _context.Book.Remove(book);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            if(BookType==BookType.AdditionalLiterature || BookType == BookType.Literature)
+                return RedirectToAction(nameof(Index), GetBooksForList());
+            else
+                return RedirectToAction(nameof(Index));
         }
 
         private bool BookExists(int id)
@@ -250,16 +261,12 @@ namespace DepartmentModule.Controllers
         public async  Task<IActionResult> AddLiterature()
         {
             BookType = BookType.Literature;
-            var books = await _context.Book.Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value).ToListAsync();
-            books = books.Where(b => SubjectsController.Current.Literatures.FirstOrDefault(l => l.BookId == b.BookID) == null).ToList();
-            return View("Index", books);
+            return View("Index", GetBooksForList());
         }
         public async Task<IActionResult> AddAdditionallLiterature()
         {
             BookType = BookType.AdditionalLiterature;
-            return View("Index", _context.Book.ToList()
-                .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value
-                && SubjectsController.Current.Literatures.First(z=>z.Book.BookID != x.BookID)!=null).ToList());
+            return View("Index", GetBooksForList());
         }
         public async Task<IActionResult> AddProgram()
         {
@@ -274,6 +281,12 @@ namespace DepartmentModule.Controllers
             return View("Index", await _context.Book
                 .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value)
                 .ToListAsync());
+        }
+        private List<Book> GetBooksForList()
+        {
+            var books = _context.Book.Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value).ToList();
+            books = books.Where(b => SubjectsController.Current.Literatures.FirstOrDefault(l => l.LiteratureId == b.BookID) == null).ToList();
+            return books.Where(b => SubjectsController.Current.AdditionalLiteratures.FirstOrDefault(l => l.SubjectAdditionalLiteratureID == b.BookID) == null).ToList();
         }
     }
 }

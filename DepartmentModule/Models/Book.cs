@@ -17,8 +17,8 @@ namespace DepartmentModule.Models
         public  string Url { get; set; }
         public  ICollection<Subject> Programs { get; set; }
         public  ICollection<Subject> Themess { get; set; }
-        public ICollection<SubjectBook> Literatures { get; set; }
-        public ICollection<SubjectBook> AdditionalLiteratures { get; set; }
+        public ICollection<SubjectLiterature> Literatures { get; set; }
+        public ICollection<SubjectAdditionalLiterature> AdditionalLiteratures { get; set; }
 
 
     }

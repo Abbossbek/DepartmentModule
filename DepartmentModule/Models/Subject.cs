@@ -20,7 +20,7 @@ namespace DepartmentModule.Models
         public int? ThemesID { get; set; }
         [ForeignKey("ThemesID")]
         public virtual Book Themes { get; set; }
-        public ICollection<SubjectBook> Literatures { get; set; }
-        public  ICollection<SubjectBook> AdditionalLiteratures { get; set; }
+        public ICollection<SubjectLiterature> Literatures { get; set; }
+        public  ICollection<SubjectAdditionalLiterature> AdditionalLiteratures { get; set; }
     }
 }

@@ -67,8 +67,8 @@ namespace DepartmentModule.Controllers
         {
             AddingNew = true;
             Current = new Subject();
-            Current.AdditionalLiteratures = new List<SubjectBook>();
-            Current.Literatures = new List<SubjectBook>();
+            Current.AdditionalLiteratures = new List<SubjectAdditionalLiterature>();
+            Current.Literatures = new List<SubjectLiterature>();
 
             return View(Current);
         }
@@ -128,20 +128,21 @@ namespace DepartmentModule.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Subject subject)
         {
-            if (id != subject.SubjectID)
-            {
-                return NotFound();
-            }
+            //if (id != subject.SubjectID)
+            //{
+            //    return NotFound();
+            //}
 
             if (ModelState.IsValid)
             {
                 try
                 {
+
                     Current.Name = subject.Name;
                     _context.Update(Current);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (DbUpdateConcurrencyException ex)
                 {
                     if (!SubjectExists(subject.SubjectID))
                     {
@@ -207,10 +208,10 @@ namespace DepartmentModule.Controllers
                         Current.Themes = book;
                     break;
                 case BookType.Literature:
-                    Current.Literatures.Add(new SubjectBook() { Book = book, Subject = Current });
+                    Current.Literatures.Add(new SubjectLiterature() { Literature = book, Subject = Current });
                     break;
                 case BookType.AdditionalLiterature:
-                    Current.AdditionalLiteratures.Add(new SubjectBook() { Book = book, Subject = Current });
+                    Current.AdditionalLiteratures.Add(new SubjectAdditionalLiterature() { AdditionalLiterature = book, Subject = Current });
                     break;
                 default:
                     break;
@@ -226,8 +227,8 @@ namespace DepartmentModule.Controllers
             {
                 return NotFound();
             }
-            Current.Literatures.Remove(Current.Literatures.First(x => x.BookId == id));
-            return RedirectToAction(nameof(Index));
+            Current.Literatures.Remove(Current.Literatures.First(x => x.LiteratureId == id));
+            return View();
         }
         public async Task<IActionResult> RemoveAdditionalLiterature(int? id)
         {
@@ -235,8 +236,8 @@ namespace DepartmentModule.Controllers
             {
                 return NotFound();
             }
-            Current.AdditionalLiteratures.Remove(Current.AdditionalLiteratures.First(x => x.BookId == id));
-            return RedirectToAction(nameof(Index));
+            Current.AdditionalLiteratures.Remove(Current.AdditionalLiteratures.First(x => x.AdditionalLiteratureId == id));
+            return View();
         }
     }
 }

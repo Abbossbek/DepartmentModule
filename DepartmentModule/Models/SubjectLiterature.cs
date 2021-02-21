@@ -7,17 +7,15 @@ using System.Threading.Tasks;
 
 namespace DepartmentModule.Models
 {
-    public class SubjectBook
+    public class SubjectLiterature
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int SubjectBookID { get; set; }
-       [Key]
-        public int SubjectId { get; set; }
+        public int SubjectLiteratureID { get; set; }
+        public int? SubjectId { get; set; }
         [ForeignKey("SubjectId")]
-        public Subject Subject { get; set; }
-        [Key]
-        public int BookId { get; set; }
-        [ForeignKey("BookId")]
-        public Book Book { get; set; }
+        public virtual Subject Subject { get; set; }
+        public int? LiteratureId { get; set; }
+        [ForeignKey("LiteratureId")]
+        public virtual Book Literature { get; set; }
     }
 }
