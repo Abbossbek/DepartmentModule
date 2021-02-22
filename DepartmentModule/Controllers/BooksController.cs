@@ -25,7 +25,7 @@ namespace DepartmentModule.Controllers
         private readonly DepartmentModuleContext _context;
         IWebHostEnvironment _appEnvironment;
         List<Book> books;
-
+        private static bool IsSelecting { get; set; } = false;
         public static BookType BookType { get; private set; }
 
         public BooksController(DepartmentModuleContext context, IWebHostEnvironment appEnvironment)
@@ -66,7 +66,7 @@ namespace DepartmentModule.Controllers
                 _context.Add(book);
                 await _context.SaveChangesAsync();
             if (BookType == BookType.AdditionalLiterature || BookType == BookType.Literature)
-                return RedirectToAction(nameof(Index), GetBooksForList());
+                return View("Index", GetBooksForList());
             else
                 return RedirectToAction(nameof(Index));
 
@@ -144,9 +144,9 @@ namespace DepartmentModule.Controllers
                 _context.Add(book);
                 await _context.SaveChangesAsync();
                 if (BookType == BookType.AdditionalLiterature || BookType == BookType.Literature)
-                    return RedirectToAction(nameof(Index), GetBooksForList());
+                    return View("Index", GetBooksForList());
                 else
-                    return RedirectToAction(nameof(Index));
+                    return View("Index");
             }
             return View(book);
         }
@@ -214,9 +214,9 @@ namespace DepartmentModule.Controllers
                     }
                 }
                 if (BookType == BookType.AdditionalLiterature || BookType == BookType.Literature)
-                    return RedirectToAction(nameof(Index), GetBooksForList());
+                    return View("Index", GetBooksForList());
                 else
-                    return RedirectToAction(nameof(Index));
+                    return View("Index");
             }
             return View(book);
         }
@@ -248,9 +248,9 @@ namespace DepartmentModule.Controllers
             _context.Book.Remove(book);
             await _context.SaveChangesAsync();
             if(BookType==BookType.AdditionalLiterature || BookType == BookType.Literature)
-                return RedirectToAction(nameof(Index), GetBooksForList());
+                return View("Index", GetBooksForList());
             else
-                return RedirectToAction(nameof(Index));
+                return View("Index");
         }
 
         private bool BookExists(int id)
@@ -260,16 +260,19 @@ namespace DepartmentModule.Controllers
         
         public async  Task<IActionResult> AddLiterature()
         {
+            IsSelecting = true;
             BookType = BookType.Literature;
             return View("Index", GetBooksForList());
         }
         public async Task<IActionResult> AddAdditionallLiterature()
         {
+            IsSelecting = true;
             BookType = BookType.AdditionalLiterature;
             return View("Index", GetBooksForList());
         }
         public async Task<IActionResult> AddProgram()
         {
+            IsSelecting = true;
             BookType = BookType.Program;
             return View("Index", await _context.Book
                 .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value)
@@ -277,6 +280,7 @@ namespace DepartmentModule.Controllers
         }
         public async Task<IActionResult> AddThemes()
         {
+            IsSelecting = true;
             BookType = BookType.Themes;
             return View("Index", await _context.Book
                 .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value)
@@ -285,8 +289,9 @@ namespace DepartmentModule.Controllers
         private List<Book> GetBooksForList()
         {
             var books = _context.Book.Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value).ToList();
-            books = books.Where(b => SubjectsController.Current.Literatures.FirstOrDefault(l => l.LiteratureId == b.BookID) == null).ToList();
-            return books.Where(b => SubjectsController.Current.AdditionalLiteratures.FirstOrDefault(l => l.SubjectAdditionalLiteratureID == b.BookID) == null).ToList();
+            books = books.Where(b => SubjectsController.Current.Literatures.FirstOrDefault(l => l.Literature.BookID == b.BookID) == null).ToList();
+            return books.Where(b => SubjectsController.Current.AdditionalLiteratures.FirstOrDefault(l => l.AdditionalLiterature.BookID == b.BookID) == null).ToList();
         }
+       
     }
 }

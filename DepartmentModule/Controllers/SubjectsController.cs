@@ -37,9 +37,9 @@ namespace DepartmentModule.Controllers
         {
             return View(await _context.Subject
                 .Include("Program")
-                .Include("AdditionalLiteratures")
                 .Include("Themes")
                 .Include("Literatures")
+                .Include(x=>x.AdditionalLiteratures)
                 .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value)
                 .ToListAsync());
         }
@@ -92,9 +92,9 @@ namespace DepartmentModule.Controllers
             return View("Index",
                 await _context.Subject
                 .Include("Program")
-                .Include("AdditionalLiteratures")
                 .Include("Themes")
                 .Include("Literatures")
+                .Include("AdditionalLiteratures")
                 .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value)
                 .ToListAsync());
         }
@@ -191,36 +191,8 @@ namespace DepartmentModule.Controllers
         {
             return _context.Subject.Any(e => e.SubjectID == id);
         }
-        public async Task<IActionResult> Select(int? id)
-        {
-            
-            if (id == null || Current == null)
-            {
-                return NotFound();
-            }
-            var book = _context.Book.FirstOrDefault(x=>x.BookID == id);
-            switch (BooksController.BookType)
-            {
-                case BookType.Program:
-                        Current.Program = book;
-                    break;
-                case BookType.Themes:
-                        Current.Themes = book;
-                    break;
-                case BookType.Literature:
-                    Current.Literatures.Add(new SubjectLiterature() { Literature = book, Subject = Current });
-                    break;
-                case BookType.AdditionalLiterature:
-                    Current.AdditionalLiteratures.Add(new SubjectAdditionalLiterature() { AdditionalLiterature = book, Subject = Current });
-                    break;
-                default:
-                    break;
-            }
-            if (AddingNew)
-                return View("Create", Current);
-            else
-                return View("Edit", Current);
-        }
+       
+        
         public async Task<IActionResult> RemoveLiterature(int? id)
         {
             if (id == null)
@@ -239,5 +211,38 @@ namespace DepartmentModule.Controllers
             Current.AdditionalLiteratures.Remove(Current.AdditionalLiteratures.First(x => x.AdditionalLiteratureId == id));
             return View();
         }
+        public async Task<IActionResult> Select(int? id)
+        {
+            if (id == null || SubjectsController.Current == null)
+            {
+                return NotFound();
+            }
+            var book = _context.Book.FirstOrDefault(x => x.BookID == id);
+            switch (BooksController.BookType)
+            {
+                case BookType.Program:
+                    Current.Program = book;
+                    break;
+                case BookType.Themes:
+                    Current.Themes = book;
+                    break;
+                case BookType.Literature:
+                    if (Current.Literatures != null && !Current.Literatures.Any(x => x.Literature.BookID == id))
+                        Current.Literatures.Add(new SubjectLiterature() { Literature = book,LiteratureId=book.BookID, SubjectId=Current.SubjectID, Subject = Current });
+                    break;
+                case BookType.AdditionalLiterature:
+                    Current.AdditionalLiteratures.Add(new SubjectAdditionalLiterature() { AdditionalLiterature = book,SubjectAdditionalLiteratureID=Current.SubjectID, AdditionalLiteratureId = book.BookID, Subject = Current });
+                    break;
+                default:
+                    break;
+            }
+
+            if (AddingNew)
+                return View("Create", Current);
+            else
+                return View("Edit", Current);
+
+        }
+
     }
 }

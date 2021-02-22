@@ -8,13 +8,21 @@
     <a class="btn btn-info" asp-action="Create">Create New</a>
 </p>
 
-<table class="table table-hover table-bordered">
+<table class="table table-hover table-bordered"  width="100%">
+    <colgroup span="1">
+        <col span="1" Width="1">
+        <col span="1" Width="2">
+        <col span="1" width="2">
+        <col span="1" width="2">
+        <col span="1" width="2">
+        <col span="1" width="1">
+    </colgroup>
     <thead>
         <tr class="table-active">
-            <th class="text-xl-center" rowspan="2">
+            <th class="text-xl-center" rowspan="2" >
                 Fan Nomi
             </th>
-            <th class="text-xl-center" rowspan="2">
+            <th class="text-xl-center" rowspan="2" >
                 Fan Dasturi
             </th>
             <th class="text-xl-center" rowspan="2">
@@ -36,7 +44,7 @@
                 Qo'shimcha
             </td>
         </tr>
-        
+
     </thead>
     <tbody>
         @foreach (var item in Model)
@@ -52,40 +60,38 @@
                 <td>
                     @item.Themes?.Name
                 </td>
-                <td style="max-width:150px;">
-                    @if (item.Literatures!=null)
+                <td>
+                    @if (item.Literatures != null)
                     {
-                    @foreach (var literature in item.Literatures)
+                        @foreach (var literature in item.Literatures)
                         {
-                        <div class="badge badge-secondary">
-                            @literature.Literature.Name
-                        </div>
+                            <div class="badge badge-secondary">
+                                @literature.Literature.Name
+                            </div>
                         }
                     }
-                </td >
-
-
-                <td style="max-width150px"> 
-                    @if (item.AdditionalLiteratures!=null)
+                </td>
+                <td>
+                    @if (item.AdditionalLiteratures != null)
                     {
-                         @foreach (var literature in item.AdditionalLiteratures)
-                    {
-                        <div class="badge badge-secondary">
-                            @literature.AdditionalLiterature?.Name
-                        </div>
-                    }
+                        @foreach (var literature in item.AdditionalLiteratures)
+                        {
+                            <div class="badge badge-secondary">
+                                @literature.AdditionalLiterature?.Name
+                            </div>
+                        }
                     }
                 </td>
 
 
-                    <td>
-                        <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.SubjectID">Edit</a> 
-                    <a asp-action="Details" class="btn btn-success" asp-route-id="@item.SubjectID">Details</a> 
+                <td>
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.SubjectID">Edit</a>
+                    <a asp-action="Details" class="btn btn-success" asp-route-id="@item.SubjectID">Details</a>
                     <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.SubjectID">Delete</a>
                 </td>
             </tr>
         }
-        </tbody>
+    </tbody>
 </table>
 
 

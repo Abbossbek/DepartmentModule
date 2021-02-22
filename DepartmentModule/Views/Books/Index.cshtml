@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create" class="btn btn-primary">Add new Book</a>
 </p>
-
+<form>
 <table class="table">
     <thead>
         <tr>
@@ -30,10 +30,12 @@
                     <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.BookID">Edit</a>
                     <a asp-action="Details" class="btn btn-success" asp-route-id="@item.BookID">Details</a>
                     <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.BookID">Delete</a>
-                    <a asp-controller="Subjects" asp-action="Select" class="btn btn-primary" asp-route-id="@item.BookID">Select</a>
+                    <a asp-action="Select" asp-controller="Subjects" class="btn btn-primary" asp-route-id="@item.BookID">Select</a>
 
                 </td>
             </tr>
         }
     </tbody>
 </table>
+</form>
+
