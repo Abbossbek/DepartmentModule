@@ -38,8 +38,8 @@ namespace DepartmentModule.Controllers
             return View(await _context.Subject
                 .Include("Program")
                 .Include("Themes")
-                .Include("Literatures")
-                .Include(x=>x.AdditionalLiteratures)
+                .Include(s => s.Literatures).ThenInclude(sl => sl.Literature)
+                .Include(s => s.AdditionalLiteratures).ThenInclude(sl => sl.AdditionalLiterature)
                 .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value)
                 .ToListAsync());
         }
@@ -93,8 +93,8 @@ namespace DepartmentModule.Controllers
                 await _context.Subject
                 .Include("Program")
                 .Include("Themes")
-                .Include("Literatures")
-                .Include("AdditionalLiteratures")
+                .Include(s => s.Literatures).ThenInclude(sl => sl.Literature)
+                .Include(s => s.AdditionalLiteratures).ThenInclude(sl => sl.AdditionalLiterature)
                 .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value)
                 .ToListAsync());
         }
@@ -108,9 +108,9 @@ namespace DepartmentModule.Controllers
             }
             var subject = _context.Subject
                 .Include("Program")
-                .Include("AdditionalLiteratures")
                 .Include("Themes")
-                .Include("Literatures")
+                .Include(s => s.Literatures).ThenInclude(sl => sl.Literature)
+                .Include(s => s.AdditionalLiteratures).ThenInclude(sl => sl.AdditionalLiterature)
                 .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value)
                 .ToList().Find(x=>x.SubjectID==id);
             if (subject == null)
