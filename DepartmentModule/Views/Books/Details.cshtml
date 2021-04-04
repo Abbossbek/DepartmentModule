@@ -1,17 +1,17 @@
 ﻿@model DepartmentModule.Models.Book
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Ma'lumotlar";
 }
 
-<h1>Details</h1>
+<h1>Ma'lumot</h1>
 
 
 
 
 
 <div>
-    <h4>Book</h4>
+    <h4>Kitob</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -29,6 +29,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.BookID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.BookID">Tahrirlash</a> |
+    <a asp-action="Index">Ro'yxatga qaytish</a>
 </div>

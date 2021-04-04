@@ -20,13 +20,13 @@ namespace DepartmentModule.Data
                 .HasOne(x => x.Program)
                 .WithMany(x => x.Programs)
                 .HasForeignKey(x => x.ProgramID)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.ClientSetNull);
 
             builder.Entity<Subject>()
                 .HasOne(x => x.Themes)
                 .WithMany(x => x.Themess)
                 .HasForeignKey(x => x.ThemesID)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.ClientSetNull);
             
             //builder.Entity<SubjectLiterature>().HasKey(k => new { k.SubjectId, k.LiteratureId });
 
@@ -34,13 +34,13 @@ namespace DepartmentModule.Data
                 .HasOne(x => x.Literature)
                 .WithMany(x => x.Literatures)
                 .HasForeignKey(x => x.LiteratureId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.ClientSetNull);
 
             builder.Entity<SubjectLiterature>()
                .HasOne(x => x.Subject)
                .WithMany(x => x.Literatures)
                .HasForeignKey(x => x.SubjectId)
-               .OnDelete(DeleteBehavior.Restrict);
+               .OnDelete(DeleteBehavior.ClientSetNull);
 
             //builder.Entity<SubjectAdditionalLiterature>().HasKey(k => new { k.SubjectId, k.AdditionalLiteratureId });
 
@@ -48,13 +48,13 @@ namespace DepartmentModule.Data
                 .HasOne(x => x.AdditionalLiterature)
                 .WithMany(x => x.AdditionalLiteratures)
                 .HasForeignKey(x => x.AdditionalLiteratureId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.ClientSetNull);
 
             builder.Entity<SubjectAdditionalLiterature>()
                .HasOne(x => x.Subject)
                .WithMany(x => x.AdditionalLiteratures)  
                .HasForeignKey(x => x.SubjectId)
-               .OnDelete(DeleteBehavior.Restrict);
+               .OnDelete(DeleteBehavior.ClientSetNull);
 
             builder.Entity<Subject>().ToTable("Subject");
             builder.Entity<Book>().ToTable("Book");

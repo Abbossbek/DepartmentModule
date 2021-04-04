@@ -1,14 +1,14 @@
 ﻿@model DepartmentModule.Models.Book
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "O'chirish";
 }
 
-<h1>Delete</h1>
+<h1>O'chirish</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Rostdan ham bu kitobni o'chirmoqchimisiz?</h3>
 <div>
-    <h4>Book</h4>
+    <h4>Kitob</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -27,7 +27,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="BookID" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="O'chirish" class="btn btn-danger" /> |
+        <a asp-action="Index">Ro'yxatga qaytish</a>
     </form>
 </div>

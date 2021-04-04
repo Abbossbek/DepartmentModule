@@ -1,10 +1,10 @@
 ﻿@model DepartmentModule.Models.Subject
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Fan yaratish";
 }
 
-<h4>Subject</h4>
+<h4>Fan</h4>
 <form asp-action="Create" method="post" enctype="multipart/form-data">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -26,7 +26,7 @@
                 </td>
                 <td>
                     <button asp-controller="Books" asp-action="AddProgram" class="btn btn-info">     
-                        Select
+                        Tanlash
                     </button>
                  </td>
             </tr>
@@ -44,7 +44,7 @@
                 </td>
                 <td>
                     <button asp-controller="Books" asp-action="AddThemes" class="btn btn-info">     
-                        Select
+                        Tanlash
                     </button>
                 </td>
             </tr>
@@ -57,10 +57,10 @@
             <thead>
                 <tr class="table-active">
                     <td >
-                        Name
+                        Nomi
                     </td>
                     <td>
-                        <a asp-controller="Books" asp-action="AddLiterature" class="btn btn-info">Add New</a>
+                        <a asp-controller="Books" asp-action="AddLiterature" class="btn btn-info">Yangi qo'shish</a>
                     </td>
                 </tr>
             </thead>
@@ -73,8 +73,8 @@
                         </td>
 
                         <td>
-                            <a asp-controller="Books" asp-action="Details" class="btn btn-success" asp-route-id="@item.Literature.BookID">Details</a>
-                            <a asp-controller="Subjects" asp-action="RemoveLiterature" class="btn btn-danger" asp-route-id="@item.Literature.BookID">Delete</a>
+                            <a asp-controller="Books" asp-action="Details" class="btn btn-success" asp-route-id="@item.Literature.BookID">Ma'lumot</a>
+                            <a asp-controller="Subjects" asp-action="RemoveLiterature" class="btn btn-danger" asp-route-id="@item.Literature.BookID">O'chirish</a>
                         </td>
                     </tr>
                 }
@@ -89,11 +89,11 @@
             <thead>
                 <tr class="table-active">
                     <td>
-                        Name
+                        Nomi
                     </td>
 
                     <td>
-                        <a asp-controller="Books" asp-action="AddAdditionallLiterature" class="btn btn-info">Add New</a>
+                        <a asp-controller="Books" asp-action="AddAdditionallLiterature" class="btn btn-info">Yangi qo'shish</a>
                     </td>
                 </tr>
             </thead>
@@ -106,8 +106,8 @@
                         </td>
 
                         <td>
-                            <a asp-controller="Books" asp-action="Details" class="btn btn-success" asp-route-id="@item.AdditionalLiterature.BookID">Details</a>
-                            <a asp-controller="Subjects" asp-action="RemoveAdditionalLiterature" class="btn btn-danger" asp-route-id="@item.AdditionalLiterature.BookID">Delete</a>
+                            <a asp-controller="Books" asp-action="Details" class="btn btn-success" asp-route-id="@item.AdditionalLiterature.BookID">Ma'lumot</a>
+                            <a asp-controller="Subjects" asp-action="RemoveAdditionalLiterature" class="btn btn-danger" asp-route-id="@item.AdditionalLiterature.BookID">O'chirish</a>
                         </td>
                     </tr>
                 }
@@ -118,13 +118,13 @@
     </div>
 
     <div class="form-group">
-        <input type="submit" value="Save" class="btn btn-primary" />
+        <input type="submit" value="Saqlash" class="btn btn-primary" />
     </div>
 </form>
 
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Ro'yxatga qaytish</a>
 </div>
 
 @section Scripts {

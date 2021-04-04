@@ -1,7 +1,7 @@
 ﻿@model DepartmentModule.Models.Book
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Yaratish";
 }
 <div class="border-dark">
 <form asp-action="Create" style="background:#909294" method="post" enctype="multipart/form-data">
@@ -10,7 +10,7 @@
         <tr >
             <td>
                 <div class="form-group">
-                    <label  class="control-label">Select your local disk</label>
+                    <label  class="control-label">Kerakli diskni tanlang</label>
                     <input asp-for="Url" type="file" name="bookUrl">
                     <span asp-validation-for="Url" class="text-danger"></span>
                 </div>
@@ -19,7 +19,7 @@
         <tr >
             <td>
                 <div class="form-group">
-                    <label  class="control-label"> As File Name</label>
+                    <label  class="control-label"> File nomi</label>
                     <input asp-for="Name" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
@@ -49,7 +49,7 @@
                     </select>
                 </div>
                 <div class="input-group">
-                    <input type="text" class="form-control" name="query" placeholder=".ppt pdf doc docx Search for Google...">
+                    <input type="text" class="form-control" name="query" placeholder="ppt, pdf, doc, docx fayllarni Google orqali qidirish...">
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-search">
@@ -82,7 +82,7 @@
                 </td>
                 <td width="60px">
                     <a asp-controller="Books" asp-action="Save" >
-                        @Html.ActionLink("Save", "Save", new { Id = item.BookID, Name = item.Name, Url = item.Url})
+                        @Html.ActionLink("Saqlash", "Save", new { Id = item.BookID, Name = item.Name, Url = item.Url})
                     </a>
                 </td>
             </tr>
@@ -97,7 +97,7 @@
 
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Ro'yxatga qaytish</a>
 </div>
 
 
