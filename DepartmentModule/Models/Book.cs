@@ -20,6 +20,7 @@ namespace DepartmentModule.Models
         public string Url { get; set; }
         [DisplayName("O'quv dasturlari")]
         public ICollection<Subject> Programs { get; set; }
+        public bool Deleted { get; set; }
         [DisplayName("Mavzular")]
         public ICollection<Subject> Themess { get; set; }
         public ICollection<SubjectLiterature> Literatures { get; set; }

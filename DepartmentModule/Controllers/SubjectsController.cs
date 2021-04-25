@@ -40,7 +40,7 @@ namespace DepartmentModule.Controllers
                 .Include("Themes")
                 .Include(s => s.Literatures).ThenInclude(sl => sl.Literature)
                 .Include(s => s.AdditionalLiteratures).ThenInclude(sl => sl.AdditionalLiterature)
-                .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value)
+                .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value && !x.Deleted)
                 .ToListAsync());
         }
 
@@ -95,7 +95,7 @@ namespace DepartmentModule.Controllers
                 .Include("Themes")
                 .Include(s => s.Literatures).ThenInclude(sl => sl.Literature)
                 .Include(s => s.AdditionalLiteratures).ThenInclude(sl => sl.AdditionalLiterature)
-                .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value)
+                .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value && !x.Deleted)
                 .ToListAsync());
         }
         // GET: Subjects/Edit/5
@@ -111,7 +111,7 @@ namespace DepartmentModule.Controllers
                 .Include("Themes")
                 .Include(s => s.Literatures).ThenInclude(sl => sl.Literature)
                 .Include(s => s.AdditionalLiteratures).ThenInclude(sl => sl.AdditionalLiterature)
-                .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value)
+                .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value && !x.Deleted)
                 .ToList().Find(x=>x.SubjectID==id);
             if (subject == null)
             {
@@ -182,7 +182,7 @@ namespace DepartmentModule.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var subject = await _context.Subject.FindAsync(id);
-            _context.Subject.Remove(subject);
+            subject.Deleted = true;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

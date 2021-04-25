@@ -38,7 +38,7 @@ namespace DepartmentModule.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Book
-                .Where(x=>x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value).ToListAsync());
+                .Where(x=>x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value && !x.Deleted).ToListAsync());
         }
 
         // GET: Books/Details/5
@@ -245,7 +245,7 @@ namespace DepartmentModule.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var book = await _context.Book.FindAsync(id);
-            _context.Book.Remove(book);
+            book.Deleted =true;
             await _context.SaveChangesAsync();
             if(BookType==BookType.AdditionalLiterature || BookType == BookType.Literature)
                 return View("Index", GetBooksForList());
@@ -275,7 +275,7 @@ namespace DepartmentModule.Controllers
             IsSelecting = true;
             BookType = BookType.Program;
             return View("Index", await _context.Book
-                .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value)
+                .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value && !x.Deleted)
                 .ToListAsync());
         }
         public async Task<IActionResult> AddThemes()
@@ -283,12 +283,12 @@ namespace DepartmentModule.Controllers
             IsSelecting = true;
             BookType = BookType.Themes;
             return View("Index", await _context.Book
-                .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value)
+                .Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value && !x.Deleted)
                 .ToListAsync());
         }
         private List<Book> GetBooksForList()
         {
-            var books = _context.Book.Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value).ToList();
+            var books = _context.Book.Where(x => x.UserID == User.FindFirst(ClaimTypes.NameIdentifier).Value && !x.Deleted).ToList();
             books = books.Where(b => SubjectsController.Current.Literatures.FirstOrDefault(l => l.Literature.BookID == b.BookID) == null).ToList();
             return books.Where(b => SubjectsController.Current.AdditionalLiteratures.FirstOrDefault(l => l.AdditionalLiterature.BookID == b.BookID) == null).ToList();
         }

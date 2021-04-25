@@ -20,6 +20,7 @@ namespace DepartmentModule.Models
         [ForeignKey("ProgramID")]
         [DisplayName("Fan dasturi")]
         public virtual Book Program { get; set; }
+        public bool Deleted { get; set; }
         public int? ThemesID { get; set; }
         [ForeignKey("ThemesID")]
         [DisplayName("Mavzular")]
